@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Preventivo Commerciale Prandini</title>
+  <rect width="512" height="512" rx="96" fill="#b58a1f"/>
+  <rect x="106" y="70" width="300" height="372" rx="34" fill="#ffffff"/>
+  <path d="M150 152h212M150 210h212M150 268h146" stroke="#20242c" stroke-width="28" stroke-linecap="round"/>
+  <path d="M150 354h76M282 354h80" stroke="#b58a1f" stroke-width="30" stroke-linecap="round"/>
+</svg>
