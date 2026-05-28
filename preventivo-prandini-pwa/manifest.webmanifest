@@ -1,0 +1,19 @@
+{
+  "name": "Preventivo Commerciale Prandini",
+  "short_name": "Preventivo",
+  "description": "Preventivo commerciale Prandini installabile e utilizzabile offline.",
+  "lang": "it",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f5",
+  "theme_color": "#b58a1f",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
