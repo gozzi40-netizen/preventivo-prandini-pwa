@@ -1,0 +1,1502 @@
+[
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto legno 20x120 prima scelta",
+    "um": "MQ",
+    "prezzo": 45
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto legno 25x150 rettificato",
+    "um": "MQ",
+    "prezzo": 58
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto rovere naturale 30x120",
+    "um": "MQ",
+    "prezzo": 52
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto pietra 60x60 naturale",
+    "um": "MQ",
+    "prezzo": 38
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto pietra 80x80 rettificato",
+    "um": "MQ",
+    "prezzo": 49
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto cemento 60x60",
+    "um": "MQ",
+    "prezzo": 34
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto cemento 90x90 rettificato",
+    "um": "MQ",
+    "prezzo": 56
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto marmo 60x120 lucido",
+    "um": "MQ",
+    "prezzo": 68
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto marmo 120x120 premium",
+    "um": "MQ",
+    "prezzo": 92
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gres effetto travertino 60x120",
+    "um": "MQ",
+    "prezzo": 72
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Rivestimento bagno bianco lucido 30x60",
+    "um": "MQ",
+    "prezzo": 28
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Rivestimento bagno decorato 30x90",
+    "um": "MQ",
+    "prezzo": 44
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Rivestimento grande lastra 120x278",
+    "um": "MQ",
+    "prezzo": 145
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Mosaico vetroso doccia",
+    "um": "MQ",
+    "prezzo": 86
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Mosaico ceramico esagonale",
+    "um": "MQ",
+    "prezzo": 74
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Listello decorativo ceramico",
+    "um": "PZ",
+    "prezzo": 12
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento esterno R11 30x60",
+    "um": "MQ",
+    "prezzo": 42
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento esterno spessore 20 mm 60x60",
+    "um": "MQ",
+    "prezzo": 64
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento antiscivolo garage 30x30",
+    "um": "MQ",
+    "prezzo": 26
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento tecnico porcellanato 20x20",
+    "um": "MQ",
+    "prezzo": 31
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Battiscopa gres coordinato 7x60",
+    "um": "ML",
+    "prezzo": 12
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Battiscopa gres coordinato 7x80",
+    "um": "ML",
+    "prezzo": 14
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Battiscopa bianco moderno",
+    "um": "ML",
+    "prezzo": 10
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Profilo jolly alluminio argento",
+    "um": "ML",
+    "prezzo": 9
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Profilo jolly alluminio nero",
+    "um": "ML",
+    "prezzo": 11
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Profilo terminale ottone spazzolato",
+    "um": "ML",
+    "prezzo": 18
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Gradino gres costa retta",
+    "um": "PZ",
+    "prezzo": 48
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Elemento angolare gradino gres",
+    "um": "PZ",
+    "prezzo": 62
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Soglia gres effetto pietra",
+    "um": "ML",
+    "prezzo": 39
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Copertina gres per muretto",
+    "um": "ML",
+    "prezzo": 46
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento SPC effetto rovere",
+    "um": "MQ",
+    "prezzo": 36
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento laminato AC5 effetto legno",
+    "um": "MQ",
+    "prezzo": 24
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento vinilico bagno waterproof",
+    "um": "MQ",
+    "prezzo": 32
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Parquet prefinito rovere 3 strati",
+    "um": "MQ",
+    "prezzo": 78
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Parquet rovere spazzolato verniciato",
+    "um": "MQ",
+    "prezzo": 86
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Materassino sottopavimento acustico",
+    "um": "MQ",
+    "prezzo": 5
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Zerbino tecnico incassato",
+    "um": "PZ",
+    "prezzo": 95
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Piastrella cucina decoro maiolica",
+    "um": "MQ",
+    "prezzo": 49
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Piastrella esagonale cemento",
+    "um": "MQ",
+    "prezzo": 54
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Piastrella diamantata metro bianca",
+    "um": "MQ",
+    "prezzo": 39
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Cartone gres 60x60 fascia standard",
+    "um": "CT",
+    "prezzo": 34
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Cartone gres 80x80 fascia media",
+    "um": "CT",
+    "prezzo": 49
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Cartone rivestimento 30x60",
+    "um": "CT",
+    "prezzo": 28
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Cartone mosaico doccia",
+    "um": "CT",
+    "prezzo": 86
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Lastra gres extra large singola",
+    "um": "PZ",
+    "prezzo": 210
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Campionatura pavimento selezionato",
+    "um": "PZ",
+    "prezzo": 8
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pezzi speciali bordo piscina",
+    "um": "ML",
+    "prezzo": 52
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Pavimento terrazzo effetto graniglia",
+    "um": "MQ",
+    "prezzo": 61
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Rivestimento cucina effetto zellige",
+    "um": "MQ",
+    "prezzo": 57
+  },
+  {
+    "categoria": "pavimenti",
+    "descrizione": "Rivestimento parete 3D ceramico",
+    "um": "MQ",
+    "prezzo": 69
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento gres formato 30x60",
+    "um": "MQ",
+    "prezzo": 26
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento gres formato 60x60",
+    "um": "MQ",
+    "prezzo": 28
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento gres formato 80x80",
+    "um": "MQ",
+    "prezzo": 34
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento grande formato 60x120",
+    "um": "MQ",
+    "prezzo": 42
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa grande lastra oltre 120 cm",
+    "um": "MQ",
+    "prezzo": 78
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa rivestimento bagno 30x60",
+    "um": "MQ",
+    "prezzo": 30
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa rivestimento bagno 30x90",
+    "um": "MQ",
+    "prezzo": 38
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa mosaico su rete",
+    "um": "MQ",
+    "prezzo": 65
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa decori e listelli",
+    "um": "ML",
+    "prezzo": 18
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa piastrelle esagonali",
+    "um": "MQ",
+    "prezzo": 48
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento diagonale",
+    "um": "MQ",
+    "prezzo": 39
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa effetto legno sfalsata",
+    "um": "MQ",
+    "prezzo": 35
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa spina italiana",
+    "um": "MQ",
+    "prezzo": 68
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa spina ungherese",
+    "um": "MQ",
+    "prezzo": 82
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa battiscopa gres",
+    "um": "ML",
+    "prezzo": 9
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa profili jolly",
+    "um": "ML",
+    "prezzo": 8
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa gradini gres",
+    "um": "PZ",
+    "prezzo": 48
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa soglie e copertine",
+    "um": "ML",
+    "prezzo": 32
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Taglio a 45 gradi bordo piastrella",
+    "um": "ML",
+    "prezzo": 24
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Foratura piastrelle per impianti",
+    "um": "PZ",
+    "prezzo": 12
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Preparazione fondo con primer",
+    "um": "MQ",
+    "prezzo": 10
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Rasatura fondo pavimento",
+    "um": "MQ",
+    "prezzo": 16
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Rasatura pareti bagno",
+    "um": "MQ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Livellina autolivellante basso spessore",
+    "um": "MQ",
+    "prezzo": 19
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Impermeabilizzazione doccia con guaina",
+    "um": "MQ",
+    "prezzo": 34
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Impermeabilizzazione bagno completa",
+    "um": "AC",
+    "prezzo": 420
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Sigillatura elastica perimetrale",
+    "um": "ML",
+    "prezzo": 7
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Stuccatura cementizia standard",
+    "um": "MQ",
+    "prezzo": 6
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Stuccatura epossidica",
+    "um": "MQ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Pulizia fine posa pavimento",
+    "um": "MQ",
+    "prezzo": 5
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Rimozione vecchio battiscopa",
+    "um": "ML",
+    "prezzo": 4
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Rimozione vecchie piastrelle pavimento",
+    "um": "MQ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Rimozione vecchio rivestimento bagno",
+    "um": "MQ",
+    "prezzo": 22
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento su esistente",
+    "um": "MQ",
+    "prezzo": 31
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento esterno R11",
+    "um": "MQ",
+    "prezzo": 36
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa pavimento 20 mm su supporti",
+    "um": "MQ",
+    "prezzo": 48
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa zoccolino PVC o alluminio",
+    "um": "ML",
+    "prezzo": 8
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa parquet flottante",
+    "um": "MQ",
+    "prezzo": 24
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa SPC flottante",
+    "um": "MQ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa materassino acustico",
+    "um": "MQ",
+    "prezzo": 4
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Assistenza posa giornaliera",
+    "um": "GG",
+    "prezzo": 320
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Trasporto materiale al piano",
+    "um": "AC",
+    "prezzo": 180
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Movimentazione grandi lastre",
+    "um": "PZ",
+    "prezzo": 45
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Protezione superfici post posa",
+    "um": "MQ",
+    "prezzo": 3
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Tracciamento quote e squadri",
+    "um": "AC",
+    "prezzo": 120
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Ripresa fughe localizzata",
+    "um": "H",
+    "prezzo": 42
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Sostituzione piastrella danneggiata",
+    "um": "PZ",
+    "prezzo": 55
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Siliconatura sanitari e box doccia",
+    "um": "ML",
+    "prezzo": 8
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa piatto doccia filo pavimento",
+    "um": "PZ",
+    "prezzo": 180
+  },
+  {
+    "categoria": "posa",
+    "descrizione": "Posa nicchia doccia rivestita",
+    "um": "PZ",
+    "prezzo": 240
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Collante cementizio C2TE bianco",
+    "um": "SAC",
+    "prezzo": 18
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Collante cementizio C2TE grigio",
+    "um": "SAC",
+    "prezzo": 16
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Collante deformabile S1 bianco",
+    "um": "SAC",
+    "prezzo": 26
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Collante deformabile S1 grigio",
+    "um": "SAC",
+    "prezzo": 24
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Collante rapido per riprese",
+    "um": "SAC",
+    "prezzo": 32
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Collante gel ad alte prestazioni",
+    "um": "SAC",
+    "prezzo": 34
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Primer fissante universale",
+    "um": "LT",
+    "prezzo": 9
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Primer consolidante profondo",
+    "um": "LT",
+    "prezzo": 14
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Primer aggrappante per supporti lisci",
+    "um": "LT",
+    "prezzo": 16
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Promotore adesione per sovrapposizione",
+    "um": "LT",
+    "prezzo": 18
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Stucco cementizio bianco",
+    "um": "KG",
+    "prezzo": 4
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Stucco cementizio grigio",
+    "um": "KG",
+    "prezzo": 4
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Stucco colorato Kerakoll fascia standard",
+    "um": "KG",
+    "prezzo": 5
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Stucco epossidico bicomponente",
+    "um": "KG",
+    "prezzo": 24
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Sigillante silicone bianco",
+    "um": "PZ",
+    "prezzo": 8
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Sigillante silicone trasparente",
+    "um": "PZ",
+    "prezzo": 8
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Sigillante silicone colorato",
+    "um": "PZ",
+    "prezzo": 11
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Guaina impermeabilizzante liquida",
+    "um": "KG",
+    "prezzo": 9
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Nastro impermeabile angolare",
+    "um": "ML",
+    "prezzo": 6
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Angolare interno impermeabile",
+    "um": "PZ",
+    "prezzo": 8
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Livellina autolivellante 25 kg",
+    "um": "SAC",
+    "prezzo": 29
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Rasante cementizio fine",
+    "um": "SAC",
+    "prezzo": 18
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Malta rapida per ripristini",
+    "um": "SAC",
+    "prezzo": 21
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Massetto premiscelato 25 kg",
+    "um": "SAC",
+    "prezzo": 7
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Additivo lattice elasticizzante",
+    "um": "LT",
+    "prezzo": 12
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Distanziatori livellanti 1 mm",
+    "um": "CF",
+    "prezzo": 18
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Distanziatori livellanti 2 mm",
+    "um": "CF",
+    "prezzo": 18
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Cunei livellanti riutilizzabili",
+    "um": "CF",
+    "prezzo": 22
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Crocette distanziatrici standard",
+    "um": "CF",
+    "prezzo": 4
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Spugna pulizia fughe professionale",
+    "um": "PZ",
+    "prezzo": 6
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Profilo alluminio argento 10 mm",
+    "um": "ML",
+    "prezzo": 9
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Profilo alluminio nero 10 mm",
+    "um": "ML",
+    "prezzo": 11
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Profilo ottone spazzolato 10 mm",
+    "um": "ML",
+    "prezzo": 18
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Profilo acciaio inox 10 mm",
+    "um": "ML",
+    "prezzo": 21
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Giunto dilatazione pavimento",
+    "um": "ML",
+    "prezzo": 16
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Tappetino desolidarizzante",
+    "um": "MQ",
+    "prezzo": 14
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Materassino antirumore sottopavimento",
+    "um": "MQ",
+    "prezzo": 5
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Membrana impermeabile doccia",
+    "um": "MQ",
+    "prezzo": 19
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Piletta scarico doccia lineare",
+    "um": "PZ",
+    "prezzo": 145
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Canalina doccia inox",
+    "um": "PZ",
+    "prezzo": 190
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Cartone collante bianco 4 sacchi",
+    "um": "CT",
+    "prezzo": 72
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Cartone stucco colorato assortito",
+    "um": "CT",
+    "prezzo": 60
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Cartone silicone sanitario",
+    "um": "CT",
+    "prezzo": 96
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Cartone profili alluminio standard",
+    "um": "CT",
+    "prezzo": 180
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Kit impermeabilizzazione box doccia",
+    "um": "PZ",
+    "prezzo": 95
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Kit pulizia dopo posa",
+    "um": "PZ",
+    "prezzo": 38
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Detergente acido tamponato",
+    "um": "LT",
+    "prezzo": 8
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Protettivo fughe antimacchia",
+    "um": "LT",
+    "prezzo": 22
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Disco diamantato gres",
+    "um": "PZ",
+    "prezzo": 32
+  },
+  {
+    "categoria": "materiale",
+    "descrizione": "Punta diamantata foro rubinetto",
+    "um": "PZ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "WC filomuro rimless bianco",
+    "um": "PZ",
+    "prezzo": 340
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Bidet filomuro bianco",
+    "um": "PZ",
+    "prezzo": 290
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Coppia sanitari filomuro",
+    "um": "PZ",
+    "prezzo": 650
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "WC sospeso rimless",
+    "um": "PZ",
+    "prezzo": 390
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Bidet sospeso",
+    "um": "PZ",
+    "prezzo": 340
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Coppia sanitari sospesi",
+    "um": "PZ",
+    "prezzo": 780
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Sedile slim soft-close",
+    "um": "PZ",
+    "prezzo": 95
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Placca comando bianca",
+    "um": "PZ",
+    "prezzo": 75
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Placca comando cromata",
+    "um": "PZ",
+    "prezzo": 95
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Cassetta incasso WC",
+    "um": "PZ",
+    "prezzo": 240
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Lavabo appoggio ceramica tondo",
+    "um": "PZ",
+    "prezzo": 180
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Lavabo appoggio rettangolare",
+    "um": "PZ",
+    "prezzo": 220
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Lavabo sospeso 80 cm",
+    "um": "PZ",
+    "prezzo": 260
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Lavabo integrato mobile 80 cm",
+    "um": "PZ",
+    "prezzo": 420
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Colonna lavabo ceramica",
+    "um": "PZ",
+    "prezzo": 120
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Piletta click-clack lavabo",
+    "um": "PZ",
+    "prezzo": 35
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Sifone arredo cromato",
+    "um": "PZ",
+    "prezzo": 65
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Specchio bagno filo lucido",
+    "um": "PZ",
+    "prezzo": 160
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Specchio retroilluminato LED",
+    "um": "PZ",
+    "prezzo": 360
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Lampada specchio bagno",
+    "um": "PZ",
+    "prezzo": 85
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Mobile bagno sospeso 60 cm",
+    "um": "PZ",
+    "prezzo": 780
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Mobile bagno sospeso 80 cm",
+    "um": "PZ",
+    "prezzo": 980
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Mobile bagno sospeso 100 cm",
+    "um": "PZ",
+    "prezzo": 1250
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Mobile bagno doppio cassetto 120 cm",
+    "um": "PZ",
+    "prezzo": 1650
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Colonna pensile bagno",
+    "um": "PZ",
+    "prezzo": 420
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Top lavabo mineralmarmo",
+    "um": "PZ",
+    "prezzo": 520
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Top lavabo gres personalizzato",
+    "um": "PZ",
+    "prezzo": 780
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Mensola bagno rovere",
+    "um": "PZ",
+    "prezzo": 160
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Portasciugamani mobile",
+    "um": "PZ",
+    "prezzo": 55
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Set accessori bagno base",
+    "um": "PZ",
+    "prezzo": 95
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Piatto doccia resina 80x120",
+    "um": "PZ",
+    "prezzo": 480
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Piatto doccia resina 90x140",
+    "um": "PZ",
+    "prezzo": 620
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Piatto doccia filo pavimento",
+    "um": "PZ",
+    "prezzo": 690
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Box doccia nicchia cristallo",
+    "um": "PZ",
+    "prezzo": 760
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Box doccia angolare cristallo",
+    "um": "PZ",
+    "prezzo": 920
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Parete walk-in cristallo",
+    "um": "PZ",
+    "prezzo": 680
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Colonna doccia termostatica",
+    "um": "PZ",
+    "prezzo": 380
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Miscelatore doccia incasso",
+    "um": "PZ",
+    "prezzo": 240
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Soffione doccia tondo",
+    "um": "PZ",
+    "prezzo": 160
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Doccetta con flessibile",
+    "um": "PZ",
+    "prezzo": 55
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Miscelatore lavabo cromato",
+    "um": "PZ",
+    "prezzo": 140
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Miscelatore lavabo nero opaco",
+    "um": "PZ",
+    "prezzo": 210
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Miscelatore bidet cromato",
+    "um": "PZ",
+    "prezzo": 130
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Miscelatore vasca esterno",
+    "um": "PZ",
+    "prezzo": 260
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Rubinetto lavanderia",
+    "um": "PZ",
+    "prezzo": 85
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Scaldasalviette bianco 120 cm",
+    "um": "PZ",
+    "prezzo": 290
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Scaldasalviette elettrico",
+    "um": "PZ",
+    "prezzo": 390
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Vasca freestanding acrilica",
+    "um": "PZ",
+    "prezzo": 1450
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Lavatoio lavanderia con mobile",
+    "um": "PZ",
+    "prezzo": 520
+  },
+  {
+    "categoria": "sanitari",
+    "descrizione": "Sanitari e arredo bagno kit completo base",
+    "um": "AC",
+    "prezzo": 4200
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Demolizione pavimento esistente",
+    "um": "MQ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Demolizione rivestimento bagno",
+    "um": "MQ",
+    "prezzo": 22
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Demolizione massetto",
+    "um": "MQ",
+    "prezzo": 28
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Demolizione tramezza interna",
+    "um": "MQ",
+    "prezzo": 35
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Rimozione sanitari esistenti",
+    "um": "PZ",
+    "prezzo": 45
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Rimozione mobile bagno esistente",
+    "um": "PZ",
+    "prezzo": 50
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Rimozione box doccia",
+    "um": "PZ",
+    "prezzo": 70
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Rimozione vasca da bagno",
+    "um": "PZ",
+    "prezzo": 160
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Carico e trasporto macerie",
+    "um": "AC",
+    "prezzo": 280
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Smaltimento macerie autorizzato",
+    "um": "CT",
+    "prezzo": 55
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Rifacimento massetto bagno",
+    "um": "MQ",
+    "prezzo": 42
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Massetto rapido basso spessore",
+    "um": "MQ",
+    "prezzo": 58
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Rasatura pareti post demolizione",
+    "um": "MQ",
+    "prezzo": 18
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Ripristino intonaco bagno",
+    "um": "MQ",
+    "prezzo": 24
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Chiusura tracce impianti",
+    "um": "ML",
+    "prezzo": 16
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Realizzazione nicchia doccia",
+    "um": "PZ",
+    "prezzo": 260
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Realizzazione muretto doccia",
+    "um": "PZ",
+    "prezzo": 320
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Controsoffitto bagno idrorepellente",
+    "um": "MQ",
+    "prezzo": 62
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Botola ispezione controsoffitto",
+    "um": "PZ",
+    "prezzo": 85
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Tinteggiatura bagno lavabile",
+    "um": "MQ",
+    "prezzo": 12
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Nuovo impianto idraulico bagno completo",
+    "um": "AC",
+    "prezzo": 1450
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto acqua calda/fredda",
+    "um": "PZ",
+    "prezzo": 180
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto scarico lavabo",
+    "um": "PZ",
+    "prezzo": 120
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto scarico WC",
+    "um": "PZ",
+    "prezzo": 180
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto scarico doccia",
+    "um": "PZ",
+    "prezzo": 160
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Spostamento attacco lavatrice",
+    "um": "PZ",
+    "prezzo": 190
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Installazione cassetta WC incasso",
+    "um": "PZ",
+    "prezzo": 260
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio sanitari a terra",
+    "um": "PZ",
+    "prezzo": 85
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio sanitari sospesi",
+    "um": "PZ",
+    "prezzo": 120
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio mobile bagno",
+    "um": "PZ",
+    "prezzo": 180
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio piatto doccia",
+    "um": "PZ",
+    "prezzo": 210
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio box doccia",
+    "um": "PZ",
+    "prezzo": 260
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio rubinetteria lavabo",
+    "um": "PZ",
+    "prezzo": 65
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Montaggio colonna doccia",
+    "um": "PZ",
+    "prezzo": 120
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Collaudo impianto idraulico",
+    "um": "AC",
+    "prezzo": 160
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Nuovo impianto elettrico bagno base",
+    "um": "AC",
+    "prezzo": 780
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto luce bagno",
+    "um": "PZ",
+    "prezzo": 95
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto presa elettrica",
+    "um": "PZ",
+    "prezzo": 85
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Punto comando specchio LED",
+    "um": "PZ",
+    "prezzo": 90
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Installazione aspiratore bagno",
+    "um": "PZ",
+    "prezzo": 140
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Assistenza muraria idraulico",
+    "um": "H",
+    "prezzo": 42
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Assistenza muraria elettricista",
+    "um": "H",
+    "prezzo": 42
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Protezione pavimenti e passaggi",
+    "um": "AC",
+    "prezzo": 120
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Allestimento cantiere bagno",
+    "um": "AC",
+    "prezzo": 180
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Pulizia finale cantiere bagno",
+    "um": "AC",
+    "prezzo": 220
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Trasporto materiale al piano senza ascensore",
+    "um": "AC",
+    "prezzo": 240
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Nolo piccolo demolitore",
+    "um": "GG",
+    "prezzo": 45
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Nolo tagliapiastrelle grande formato",
+    "um": "GG",
+    "prezzo": 65
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Direzione tecnica intervento bagno",
+    "um": "GG",
+    "prezzo": 380
+  },
+  {
+    "categoria": "interventi",
+    "descrizione": "Ristrutturazione bagno chiavi in mano base",
+    "um": "AC",
+    "prezzo": 7800
+  }
+]

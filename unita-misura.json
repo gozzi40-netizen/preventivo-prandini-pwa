@@ -1,0 +1,50 @@
+[
+  {
+    "value": "MQ",
+    "label": "MQ - metri quadri"
+  },
+  {
+    "value": "ML",
+    "label": "ML - metri lineari"
+  },
+  {
+    "value": "PZ",
+    "label": "PZ - pezzi"
+  },
+  {
+    "value": "CT",
+    "label": "CT - cartoni"
+  },
+  {
+    "value": "KG",
+    "label": "KG - chilogrammi"
+  },
+  {
+    "value": "LT",
+    "label": "LT - litri"
+  },
+  {
+    "value": "NR",
+    "label": "NR - numero"
+  },
+  {
+    "value": "AC",
+    "label": "AC - a corpo"
+  },
+  {
+    "value": "CF",
+    "label": "CF - confezioni"
+  },
+  {
+    "value": "SAC",
+    "label": "SAC - sacchi"
+  },
+  {
+    "value": "H",
+    "label": "H - ore"
+  },
+  {
+    "value": "GG",
+    "label": "GG - giornate"
+  }
+]

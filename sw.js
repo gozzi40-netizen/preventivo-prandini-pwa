@@ -1,8 +1,11 @@
-const CACHE_NAME = "preventivo-prandini-v1";
+const CACHE_NAME = "preventivo-prandini-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./index-catalogo.html",
   "./manifest.webmanifest",
+  "./catalogo.json",
+  "./unita-misura.json",
   "./icons/icon.svg"
 ];
 

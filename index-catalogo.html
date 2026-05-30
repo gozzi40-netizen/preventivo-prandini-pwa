@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preventivo Commerciale Smart - Catalogo</title>
+  <meta name="theme-color" content="#b58a1f" />
+  <meta name="description" content="Preventivo commerciale Prandini installabile e utilizzabile offline." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon.svg" />
+  <style>
+    :root {
+      --ink: #20242c;
+      --muted: #697180;
+      --line: #d9dee7;
+      --soft: #f6f7f9;
+      --paper: #ffffff;
+      --gold: #b58a1f;
+      --red: #b33a31;
+      --orange: #c77b36;
+      --green: #3e7b38;
+      --blue: #1d5e8c;
+      --shadow: 0 18px 50px rgba(25, 32, 44, .10);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #eef1f5;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button, input, textarea { font: inherit; }
+
+    .app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-title span {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .toolbar-title strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 22px;
+      letter-spacing: -.03em;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 2px 10px rgba(25, 32, 44, .04);
+      transition: .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(25, 32, 44, .08);
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .btn.gold {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    .sheet {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .brand-dynamic {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      min-height: 48px;
+      max-width: 100%;
+    }
+
+    .brand-logo-card {
+      height: 42px;
+      min-width: 82px;
+      max-width: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 8px;
+      border: 1px solid rgba(181, 138, 31, .18);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .brand-logo-card img {
+      display: block;
+      max-height: 30px;
+      max-width: 112px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-logo-card.group-logo {
+      border-color: rgba(32, 36, 44, .14);
+      background: #fafafa;
+    }
+
+    .brand-logo-card.group-logo img {
+      max-height: 28px;
+      max-width: 105px;
+    }
+
+    .field label,
+    .option-label,
+    .logo-control-title {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      outline: none;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 82px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(181, 138, 31, .12);
+    }
+
+    .quote-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .logo-controls,
+    .controls {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--soft);
+    }
+
+    .logo-controls {
+      grid-template-columns: 180px repeat(4, minmax(130px, 1fr));
+      align-items: center;
+    }
+
+    .controls {
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      margin-bottom: 24px;
+    }
+
+    .logo-control-title {
+      color: var(--gold);
+      margin: 0;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--ink);
+      font-weight: 750;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+    }
+
+    .check input:disabled {
+      opacity: .75;
+      cursor: not-allowed;
+    }
+
+    .sections-panel {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .section-toggle {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      min-height: 66px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      box-shadow: 0 2px 10px rgba(25, 32, 44, .03);
+    }
+
+    .section-toggle input {
+      margin-top: 2px;
+      accent-color: var(--gold);
+    }
+
+    .section-toggle strong {
+      display: block;
+      font-size: 11px;
+      line-height: 1.25;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .section-toggle span {
+      display: block;
+      margin-top: 5px;
+      width: 46px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .section {
+      margin: 18px 0 26px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      color: #fff;
+    }
+
+    .section-title {
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .section-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .small-btn {
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      border-radius: 999px;
+      padding: 6px 9px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: #282d35;
+      color: #f6dc91;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
+      padding: 10px 10px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      white-space: nowrap;
+    }
+
+    td {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      padding: 0;
+    }
+
+    td:last-child,
+    th:last-child { border-right: 0; }
+
+    .cell-input {
+      width: 100%;
+      min-height: 42px;
+      border: 0;
+      padding: 10px 10px;
+      outline: none;
+      background: transparent;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .catalog-picker {
+      display: grid;
+      gap: 6px;
+      padding: 6px;
+    }
+
+    .catalog-select,
+    .um-select {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8f9fb;
+      color: var(--ink);
+      padding: 7px 9px;
+      outline: none;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .catalog-picker .cell-input {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    textarea.cell-input {
+      resize: vertical;
+      display: block;
+    }
+
+    .cell-input.number,
+    .money-cell {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .money-cell {
+      padding: 10px 12px;
+      font-weight: 850;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .delete-row {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #9aa1ad;
+      cursor: pointer;
+      font-size: 20px;
+      padding: 6px;
+    }
+
+    .delete-row:hover { color: var(--red); }
+
+    .subtotal-row td {
+      background: #fafafa;
+      padding: 10px 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-size: 12px;
+    }
+
+    .subtotal-row .subtotal-value {
+      text-align: right;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .notes-section {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .totals {
+      border-top: 2px solid var(--gold);
+      padding-top: 14px;
+      margin-left: auto;
+      width: min(100%, 430px);
+    }
+
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 7px 0;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-line span:first-child {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+    }
+
+    .total-line.grand {
+      color: var(--gold);
+      font-size: 24px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 5px;
+    }
+
+    .conditions {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .conditions h3 {
+      margin: 0 0 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 13px;
+      color: var(--gold);
+    }
+
+    .condition-item {
+      margin: 8px 0;
+      color: #4d5562;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .print-help {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    body.hide-discount .col-discount,
+    body.hide-unit-price .col-price,
+    body.hide-subtotals .subtotal-row,
+    body.hide-totals .totals,
+    body.hide-iva .iva-line,
+    body.hide-actions .col-actions,
+    body.hide-actions .section-actions {
+      display: none !important;
+    }
+
+    @media screen and (max-width: 980px) {
+      .app { padding: 12px; }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .toolbar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        padding: 11px 10px;
+      }
+
+      .sheet { padding: 16px; }
+
+      .header {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .quote-meta,
+      .controls,
+      .logo-controls,
+      .sections-panel,
+      .notes-section {
+        grid-template-columns: 1fr;
+        min-width: 0;
+      }
+
+      .brand-dynamic {
+        justify-content: center;
+        min-height: auto;
+      }
+
+      .brand-logo-card {
+        width: calc(50% - 7px);
+        max-width: none;
+      }
+
+      .brand-logo-card img {
+        max-width: 100%;
+      }
+
+      .section { overflow: visible; }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .small-btn {
+        width: 100%;
+        padding: 9px 10px;
+      }
+
+      table, thead, tbody, tr, th, td {
+        display: block;
+        width: 100% !important;
+      }
+
+      thead { display: none; }
+
+      tr[data-row] {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 10px 12px;
+        background: #fff;
+      }
+
+      tr[data-row] td {
+        display: grid;
+        grid-template-columns: 118px 1fr;
+        align-items: center;
+        gap: 10px;
+        border: 0;
+        padding: 4px 0;
+        background: transparent;
+      }
+
+      tr[data-row] td::before {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        font-size: 10px;
+        font-weight: 900;
+      }
+
+      tr[data-row] td:nth-child(1)::before { content: "Descrizione"; }
+      tr[data-row] td:nth-child(2)::before { content: "U.M."; }
+      tr[data-row] td:nth-child(3)::before { content: "Q.tà"; }
+      tr[data-row] td:nth-child(4)::before { content: "Prezzo"; }
+      tr[data-row] td:nth-child(5)::before { content: "Sconto"; }
+      tr[data-row] td:nth-child(6)::before { content: "Netto"; }
+      tr[data-row] td:nth-child(7)::before { content: ""; }
+
+      .cell-input,
+      textarea.cell-input,
+      .money-cell {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: #fff;
+      }
+
+      .money-cell {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .delete-row {
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: #fafafa;
+      }
+
+      .subtotal-row {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        padding: 10px;
+        background: #fafafa;
+      }
+
+      .subtotal-row td {
+        border: 0;
+        padding: 4px 0;
+      }
+
+      .subtotal-row td:first-child { font-size: 11px; }
+      .subtotal-row .subtotal-value { text-align: right; font-size: 16px; }
+      .totals { width: 100%; }
+      .total-line.grand { font-size: 20px; }
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+
+    @media print {
+      html, body {
+        width: 210mm;
+        min-height: 297mm;
+        overflow: visible !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .app {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .toolbar,
+      .controls,
+      .logo-controls,
+      .sections-panel,
+      .section-actions,
+      .delete-row,
+      .print-help {
+        display: none !important;
+      }
+
+      .sheet {
+        width: 190mm !important;
+        max-width: 190mm !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+      }
+
+      .header {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 8px !important;
+        border-bottom: 2px solid var(--gold) !important;
+      }
+
+      .brand-dynamic {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 6mm !important;
+        min-height: 20mm !important;
+        margin-bottom: 4mm !important;
+      }
+
+      .brand-logo-card {
+        height: 18mm !important;
+        min-width: 0 !important;
+        max-width: 42mm !important;
+        padding: 1mm 2mm !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+      }
+
+      .brand-logo-card img {
+        max-height: 15mm !important;
+        max-width: 38mm !important;
+      }
+
+      .brand-logo-card.group-logo img {
+        max-height: 13mm !important;
+        max-width: 32mm !important;
+      }
+
+      .quote-meta {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16mm !important;
+        min-width: 0 !important;
+        width: 100% !important;
+      }
+
+      .field label {
+        font-size: 8.5px !important;
+        margin-bottom: 3px !important;
+      }
+
+      .field input,
+      .field textarea {
+        border: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+
+      .section {
+        width: 100% !important;
+        margin: 8px 0 11px !important;
+        overflow: visible !important;
+        border-radius: 10px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-head {
+        padding: 5px 8px !important;
+      }
+
+      .section-title {
+        font-size: 9px !important;
+      }
+
+      table {
+        width: 100% !important;
+        min-width: 0 !important;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+      }
+
+      th {
+        padding: 4px 5px !important;
+        font-size: 8px !important;
+        line-height: 1.1 !important;
+      }
+
+      td { padding: 0 !important; }
+
+      th:nth-child(1), td:nth-child(1) { width: 42% !important; }
+      th:nth-child(2), td:nth-child(2) { width: 8% !important; }
+      th:nth-child(3), td:nth-child(3) { width: 9% !important; }
+      th:nth-child(4), td:nth-child(4) { width: 14% !important; }
+      th:nth-child(5), td:nth-child(5) { width: 11% !important; }
+      th:nth-child(6), td:nth-child(6) { width: 13% !important; }
+      th:nth-child(7), td:nth-child(7) { width: 0 !important; display: none !important; }
+
+      .cell-input,
+      textarea.cell-input,
+      .money-cell {
+        padding: 3px 5px !important;
+        min-height: 18px !important;
+        font-size: 9.5px !important;
+        line-height: 1.2 !important;
+      }
+
+      textarea.cell-input {
+        resize: none !important;
+        overflow: hidden !important;
+      }
+
+      .subtotal-row td {
+        padding: 4px 6px !important;
+        font-size: 8.5px !important;
+      }
+
+      .subtotal-row .subtotal-value { font-size: 9px !important; }
+
+      .notes-section {
+        display: grid !important;
+        grid-template-columns: 1fr 80mm !important;
+        gap: 10mm !important;
+        margin-top: 12px !important;
+      }
+
+      .totals {
+        width: 80mm !important;
+        padding-top: 8px !important;
+      }
+
+      .total-line { padding: 4px 0 !important; }
+      .total-line span:first-child { font-size: 8.5px !important; }
+      .total-line.grand { font-size: 15px !important; padding-top: 7px !important; }
+
+      .conditions {
+        margin-top: 12px !important;
+        padding-top: 10px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .conditions h3 {
+        font-size: 10px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .condition-item,
+      .field textarea {
+        font-size: 9px !important;
+        line-height: 1.3 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <span>Bau Group</span>
+        <strong>Preventivo commerciale smart</strong>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn" id="resetBtn">Nuovo preventivo</button>
+        <button class="btn" id="addAllBtn">Aggiungi una riga per sezione</button>
+        <button class="btn primary" id="previewBtn">Vista PDF pulita</button>
+        <button class="btn gold" id="printBtn">Esporta PDF per Delera</button>
+      </div>
+    </div>
+
+    <main class="sheet" id="sheet">
+      <section class="header">
+        <div class="brand-dynamic" id="brandLogos" aria-label="Loghi selezionati"></div>
+        <div class="quote-meta">
+          <div class="field">
+            <label for="quoteNumber">Preventivo N°</label>
+            <input id="quoteNumber" value="001-2026" />
+          </div>
+          <div class="field">
+            <label for="quoteDate">Data</label>
+            <input id="quoteDate" type="date" />
+          </div>
+        </div>
+      </section>
+
+      <section class="logo-controls" aria-label="Selezione loghi">
+        <div class="logo-control-title">Loghi intestazione</div>
+        <label class="check"><input type="checkbox" class="logo-check" value="bau" checked disabled /> Bau Group</label>
+        <label class="check"><input type="checkbox" class="logo-check" value="progetto" checked /> Progetto Colore</label>
+        <label class="check"><input type="checkbox" class="logo-check" value="prandini" checked /> Prandini Ceramiche</label>
+        <label class="check"><input type="checkbox" class="logo-check" value="pavinord" /> Pavinord</label>
+      </section>
+
+      <section class="controls" aria-label="Opzioni di visualizzazione">
+        <label class="check"><input type="checkbox" id="showUnitPrice" checked /> Mostra prezzi unitari</label>
+        <label class="check"><input type="checkbox" id="showDiscount" checked /> Mostra sconto</label>
+        <label class="check"><input type="checkbox" id="showSubtotals" checked /> Mostra subtotali</label>
+        <label class="check"><input type="checkbox" id="showTotals" checked /> Mostra totale finale</label>
+        <label class="check"><input type="checkbox" id="showIva" /> Mostra IVA</label>
+        <div class="field">
+          <label for="ivaRate">Aliquota IVA %</label>
+          <input id="ivaRate" type="number" min="0" step="1" value="22" />
+        </div>
+        <label class="check"><input type="checkbox" id="cleanMode" /> Nascondi pulsanti in pagina</label>
+      </section>
+
+      <section class="sections-panel" id="sectionToggles"></section>
+      <section id="sectionsContainer"></section>
+
+      <section class="notes-section">
+        <div class="field">
+          <label for="freeNotes">Note commerciali</label>
+          <textarea id="freeNotes" placeholder="Condizioni commerciali, tempi di consegna, validità offerta..."></textarea>
+        </div>
+
+        <div class="totals" id="totalsBox">
+          <div class="total-line">
+            <span>Totale imponibile</span>
+            <strong id="totalNet">€ 0,00</strong>
+          </div>
+          <div class="total-line iva-line">
+            <span>IVA</span>
+            <strong id="totalIva">€ 0,00</strong>
+          </div>
+          <div class="total-line grand">
+            <span>Totale preventivo</span>
+            <strong id="totalGrand">€ 0,00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="conditions" id="conditionsBox">
+        <h3>Termini e condizioni</h3>
+        <div id="conditionsList"></div>
+      </section>
+      <p class="print-help">Per allegarlo in Delera: Esporta PDF → salva → inserisci il PDF nel contratto.</p>
+    </main>
+  </div>
+
+  <script>
+    const LOGOS = {
+      bau: {
+        label: "Bau Group",
+        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Bau--300x153.png",
+        className: "group-logo"
+      },
+      progetto: {
+        label: "Progetto Colore",
+        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Progetto-Colore@3x.png",
+        className: ""
+      },
+      prandini: {
+        label: "Prandini Ceramiche",
+        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Prandini-Ceramiche@3x.png",
+        className: ""
+      },
+      pavinord: {
+        label: "Pavinord",
+        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Pavinord@3x.png",
+        className: ""
+      }
+    };
+
+    const logoOrder = ["bau", "progetto", "prandini", "pavinord"];
+
+    const categories = [
+      {
+        id: "pavimenti",
+        label: "Pavimenti e rivestimenti",
+        color: "#b58a1f",
+        defaultRows: [
+          ["Gres effetto legno 20x120", "mq", 50, 45, 10],
+          ["Battiscopa coordinato", "ml", 30, 12, 5]
+        ],
+        condition: "Per forniture di pavimenti e rivestimenti: eventuali variazioni cromatiche tra campioni e materiale consegnato sono da considerarsi fisiologiche. Le quantità indicate possono includere sfridi standard."
+      },
+      {
+        id: "posa",
+        label: "Posa pavimenti e rivestimenti",
+        color: "#b33a31",
+        defaultRows: [
+          ["Posa in opera specializzata formato 20x120", "mq", 50, 28, 0],
+          ["Preparazione fondo con primer", "mq", 50, 10, 0]
+        ],
+        condition: "Per servizi di posa in opera: il prezzo si intende valido su superfici idonee, pulite e pronte alla posa. Eventuali livellamenti, preparazioni supplementari o interventi non previsti saranno conteggiati a parte."
+      },
+      {
+        id: "materiale",
+        label: "Materiale di posa",
+        color: "#c77b36",
+        defaultRows: [
+          ["Primer fissante", "kg", 5, 10, 0],
+          ["Stucco 123 bianco antico", "kg", 5, 4, 0],
+          ["H40 colla nolimits", "kg", 25, 0.6, 0]
+        ],
+        condition: "I materiali di posa sono stimati sulla base delle quantità indicate. Eventuali integrazioni necessarie durante l'esecuzione verranno concordate e conteggiate separatamente."
+      },
+      {
+        id: "sanitari",
+        label: "Sanitari e arredobagno",
+        color: "#3e7b38",
+        defaultRows: [
+          ["Coppia sanitari filomuro", "nr", 1, 650, 5],
+          ["Mobile bagno con specchiera", "nr", 1, 1500, 5]
+        ],
+        condition: "Per sanitari e arredobagno: disponibilità, finiture e tempi di consegna sono soggetti a conferma del fornitore al momento dell'ordine."
+      },
+      {
+        id: "interventi",
+        label: "Interventi per ristrutturazione bagno",
+        color: "#1d5e8c",
+        defaultRows: [
+          ["Demolizione e smaltimento pavimenti, rivestimenti e sanitari", "ac", 1, 550, 0],
+          ["Rifacimento massetto", "ac", 1, 850, 0],
+          ["Nuova impiantistica idraulica completa", "nr", 1, 1200, 0]
+        ],
+        condition: "Per interventi di ristrutturazione: eventuali vizi occulti, difformità, tubature deteriorate o lavorazioni non visibili prima dell'apertura del cantiere saranno oggetto di valutazione separata."
+      }
+    ];
+
+    const state = { rows: {}, active: {} };
+    const STORAGE_KEY = "preventivo-prandini-smart-catalogo";
+    let unitsCatalog = [];
+    let itemsCatalog = [];
+    const euro = new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" });
+
+    const brandLogos = document.getElementById("brandLogos");
+    const sectionToggles = document.getElementById("sectionToggles");
+    const sectionsContainer = document.getElementById("sectionsContainer");
+    const conditionsList = document.getElementById("conditionsList");
+
+    function todayISO() {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    }
+
+    function uid() {
+      return Math.random().toString(36).slice(2) + Date.now().toString(36);
+    }
+
+    function initState() {
+      categories.forEach((cat, index) => {
+        state.active[cat.id] = index < 2;
+        state.rows[cat.id] = cat.defaultRows.map(([description, um, qty, price, discount]) => ({ id: uid(), description, um, qty, price, discount }));
+      });
+      document.getElementById("quoteDate").value = todayISO();
+    }
+
+    async function loadCatalogData() {
+      try {
+        const [unitsResponse, itemsResponse] = await Promise.all([
+          fetch("unita-misura.json"),
+          fetch("catalogo.json")
+        ]);
+        if (!unitsResponse.ok || !itemsResponse.ok) throw new Error("Catalogo non disponibile");
+        unitsCatalog = await unitsResponse.json();
+        itemsCatalog = await itemsResponse.json();
+      } catch {
+        unitsCatalog = [
+          { value: "MQ", label: "MQ - metri quadri" },
+          { value: "ML", label: "ML - metri lineari" },
+          { value: "PZ", label: "PZ - pezzi" },
+          { value: "CT", label: "CT - corpo totale" }
+        ];
+        itemsCatalog = [];
+      }
+    }
+
+    function savePreventivo() {
+      syncFromDOM();
+      const data = {
+        quoteNumber: document.getElementById("quoteNumber").value,
+        quoteDate: document.getElementById("quoteDate").value,
+        freeNotes: document.getElementById("freeNotes").value,
+        logos: Array.from(document.querySelectorAll(".logo-check:checked")).map(input => input.value),
+        options: {
+          showUnitPrice: document.getElementById("showUnitPrice").checked,
+          showDiscount: document.getElementById("showDiscount").checked,
+          showSubtotals: document.getElementById("showSubtotals").checked,
+          showTotals: document.getElementById("showTotals").checked,
+          showIva: document.getElementById("showIva").checked,
+          ivaRate: document.getElementById("ivaRate").value,
+          cleanMode: document.getElementById("cleanMode").checked
+        },
+        active: state.active,
+        rows: state.rows
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadPreventivo() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+
+      try {
+        const data = JSON.parse(saved);
+        if (data.active && data.rows) {
+          categories.forEach(cat => {
+            state.active[cat.id] = Boolean(data.active[cat.id]);
+            state.rows[cat.id] = Array.isArray(data.rows[cat.id]) ? data.rows[cat.id] : state.rows[cat.id];
+          });
+        }
+
+        document.getElementById("quoteNumber").value = data.quoteNumber || "001-2026";
+        document.getElementById("quoteDate").value = data.quoteDate || todayISO();
+        document.getElementById("freeNotes").value = data.freeNotes || "";
+
+        if (Array.isArray(data.logos)) {
+          document.querySelectorAll(".logo-check").forEach(input => {
+            input.checked = input.value === "bau" || data.logos.includes(input.value);
+          });
+        }
+
+        if (data.options) {
+          Object.entries(data.options).forEach(([id, value]) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (el.type === "checkbox") el.checked = Boolean(value);
+            else el.value = value;
+          });
+        }
+      } catch {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+
+    function renderLogos() {
+      const checked = Array.from(document.querySelectorAll(".logo-check:checked")).map(input => input.value);
+      const selected = logoOrder.filter(key => checked.includes(key) || key === "bau");
+      brandLogos.innerHTML = "";
+
+      selected.forEach(key => {
+        const logo = LOGOS[key];
+        if (!logo) return;
+        const card = document.createElement("div");
+        card.className = `brand-logo-card ${logo.className}`.trim();
+        card.innerHTML = `<img src="${logo.src}" alt="${logo.label}" />`;
+        brandLogos.appendChild(card);
+      });
+    }
+
+    function createToggle(cat) {
+      const label = document.createElement("label");
+      label.className = "section-toggle";
+      label.innerHTML = `
+        <input type="checkbox" ${state.active[cat.id] ? "checked" : ""} data-section-toggle="${cat.id}" />
+        <div><strong>${cat.label}</strong><span style="background:${cat.color}"></span></div>
+      `;
+      return label;
+    }
+
+    function createSection(cat) {
+      if (!state.active[cat.id]) return null;
+      const section = document.createElement("article");
+      section.className = "section";
+      section.dataset.section = cat.id;
+      section.innerHTML = `
+        <datalist id="catalogo-${cat.id}">
+          ${itemsCatalog
+            .filter(item => item.categoria === cat.id)
+            .map(item => `<option value="${escapeHTML(item.descrizione)}"></option>`)
+            .join("")}
+        </datalist>
+        <div class="section-head" style="background:${cat.color}">
+          <div class="section-title">${cat.label}</div>
+          <div class="section-actions">
+            <button type="button" class="small-btn" data-add-row="${cat.id}">+ Riga</button>
+            <button type="button" class="small-btn" data-add-five="${cat.id}">+5 righe</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Descrizione</th>
+              <th>U.M.</th>
+              <th>Q.tà</th>
+              <th class="col-price">Prezzo unit.</th>
+              <th class="col-discount">Sconto %</th>
+              <th>Netto</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${state.rows[cat.id].map(row => createRowHTML(cat.id, row)).join("")}
+            <tr class="subtotal-row">
+              <td colspan="5">Subtotale ${cat.label}</td>
+              <td class="subtotal-value" data-subtotal="${cat.id}">€ 0,00</td>
+              <td class="col-actions"></td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+      return section;
+    }
+
+    function createRowHTML(catId, row) {
+      return `
+        <tr data-row="${row.id}" data-cat="${catId}">
+          <td>
+            <div class="catalog-picker">
+              <select class="catalog-select" data-catalog-select>
+                ${createCatalogOptions(catId, row.description)}
+              </select>
+              <input class="cell-input" data-field="description" value="${escapeHTML(row.description || "")}" />
+            </div>
+          </td>
+          <td>
+            <div class="catalog-picker">
+              <select class="um-select" data-um-select>
+                ${createUnitOptions(row.um)}
+              </select>
+              <input class="cell-input" data-field="um" value="${escapeHTML(row.um || "")}" />
+            </div>
+          </td>
+          <td><input class="cell-input number" type="number" min="0" step="0.01" data-field="qty" value="${num(row.qty)}" /></td>
+          <td class="col-price"><input class="cell-input number" type="number" step="0.01" data-field="price" value="${num(row.price)}" /></td>
+          <td class="col-discount"><input class="cell-input number" type="number" min="0" max="100" step="0.01" data-field="discount" value="${num(row.discount)}" /></td>
+          <td class="money-cell" data-net="${row.id}">€ 0,00</td>
+          <td class="col-actions"><button type="button" class="delete-row" data-delete-row="${row.id}" title="Elimina riga">×</button></td>
+        </tr>
+      `;
+    }
+
+    function createCatalogOptions(catId, selectedDescription = "") {
+      const options = itemsCatalog.filter(item => item.categoria === catId);
+      return [
+        '<option value="">Scegli da catalogo</option>',
+        ...options.map(item => {
+          const selected = item.descrizione === selectedDescription ? " selected" : "";
+          return `<option value="${escapeHTML(item.descrizione)}"${selected}>${escapeHTML(item.descrizione)}</option>`;
+        })
+      ].join("");
+    }
+
+    function createUnitOptions(selectedUnit = "") {
+      return [
+        '<option value="">U.M.</option>',
+        ...unitsCatalog.map(unit => {
+          const selected = unit.value === selectedUnit ? " selected" : "";
+          return `<option value="${escapeHTML(unit.value)}"${selected}>${escapeHTML(unit.label || unit.value)}</option>`;
+        })
+      ].join("");
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;" }[char]));
+    }
+
+    function num(value) {
+      const n = Number(value || 0);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function calcRow(row) {
+      return num(row.qty) * num(row.price) * (1 - num(row.discount) / 100);
+    }
+
+    function syncFromDOM() {
+      document.querySelectorAll("tr[data-row]").forEach(tr => {
+        const catId = tr.dataset.cat;
+        const rowId = tr.dataset.row;
+        const row = state.rows[catId]?.find(r => r.id === rowId);
+        if (!row) return;
+        tr.querySelectorAll("[data-field]").forEach(input => {
+          const field = input.dataset.field;
+          row[field] = ["qty", "price", "discount"].includes(field) ? num(input.value) : input.value;
+        });
+      });
+    }
+
+    function applyCatalogMatch(input) {
+      const tr = input.closest("tr[data-row]");
+      if (!tr) return;
+      const item = itemsCatalog.find(entry =>
+        entry.categoria === tr.dataset.cat &&
+        entry.descrizione.toLowerCase() === input.value.trim().toLowerCase()
+      );
+      if (!item) return;
+
+      const umInput = tr.querySelector('[data-field="um"]');
+      const priceInput = tr.querySelector('[data-field="price"]');
+      if (umInput && item.um) umInput.value = item.um;
+      if (priceInput && item.prezzo !== undefined) priceInput.value = num(item.prezzo);
+      syncFromDOM();
+      calculate();
+    }
+
+    function applyCatalogSelection(select) {
+      const tr = select.closest("tr[data-row]");
+      if (!tr || !select.value) return;
+      const input = tr.querySelector('[data-field="description"]');
+      if (input) input.value = select.value;
+      applyCatalogMatch(input);
+      savePreventivo();
+    }
+
+    function applyUnitSelection(select) {
+      const tr = select.closest("tr[data-row]");
+      if (!tr || !select.value) return;
+      const input = tr.querySelector('[data-field="um"]');
+      if (input) input.value = select.value;
+      syncFromDOM();
+      calculate();
+      savePreventivo();
+    }
+
+    function renderUnitDatalist() {
+      let datalist = document.getElementById("unitaMisuraList");
+      if (!datalist) {
+        datalist = document.createElement("datalist");
+        datalist.id = "unitaMisuraList";
+        document.body.appendChild(datalist);
+      }
+      datalist.innerHTML = unitsCatalog
+        .map(unit => `<option value="${escapeHTML(unit.value)}">${escapeHTML(unit.label || unit.value)}</option>`)
+        .join("");
+    }
+
+    function render() {
+      renderLogos();
+      renderUnitDatalist();
+      sectionToggles.innerHTML = "";
+      categories.forEach(cat => sectionToggles.appendChild(createToggle(cat)));
+      sectionsContainer.innerHTML = "";
+      categories.forEach(cat => {
+        const section = createSection(cat);
+        if (section) sectionsContainer.appendChild(section);
+      });
+      bindDynamicEvents();
+      updateDisplayOptions();
+      calculate();
+    }
+
+    function bindDynamicEvents() {
+      document.querySelectorAll("[data-section-toggle]").forEach(input => {
+        input.addEventListener("change", e => {
+          syncFromDOM();
+          state.active[e.target.dataset.sectionToggle] = e.target.checked;
+          render();
+          savePreventivo();
+        });
+      });
+
+      document.querySelectorAll("[data-add-row]").forEach(btn => btn.addEventListener("click", e => addRow(e.target.dataset.addRow)));
+
+      document.querySelectorAll("[data-add-five]").forEach(btn => {
+        btn.addEventListener("click", e => {
+          for (let i = 0; i < 5; i++) addRow(e.target.dataset.addFive, false);
+          render();
+          savePreventivo();
+        });
+      });
+
+      document.querySelectorAll("[data-delete-row]").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const rowId = e.target.dataset.deleteRow;
+          const catId = e.target.closest("tr").dataset.cat;
+          state.rows[catId] = state.rows[catId].filter(r => r.id !== rowId);
+          render();
+          savePreventivo();
+        });
+      });
+
+      document.querySelectorAll("[data-field]").forEach(input => {
+        input.addEventListener("input", () => {
+          if (input.dataset.field === "description") applyCatalogMatch(input);
+          syncFromDOM();
+          calculate();
+          savePreventivo();
+        });
+      });
+
+      document.querySelectorAll("[data-catalog-select]").forEach(select => {
+        select.addEventListener("change", () => applyCatalogSelection(select));
+      });
+
+      document.querySelectorAll("[data-um-select]").forEach(select => {
+        select.addEventListener("change", () => applyUnitSelection(select));
+      });
+    }
+
+    function addRow(catId, shouldRender = true) {
+      syncFromDOM();
+      state.rows[catId].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0 });
+      if (shouldRender) render();
+      savePreventivo();
+    }
+
+    function calculate() {
+      let totalNet = 0;
+      categories.forEach(cat => {
+        if (!state.active[cat.id]) return;
+        let subtotal = 0;
+        state.rows[cat.id].forEach(row => {
+          const net = calcRow(row);
+          subtotal += net;
+          const netCell = document.querySelector(`[data-net="${row.id}"]`);
+          if (netCell) netCell.textContent = euro.format(net);
+        });
+        totalNet += subtotal;
+        const subtotalCell = document.querySelector(`[data-subtotal="${cat.id}"]`);
+        if (subtotalCell) subtotalCell.textContent = euro.format(subtotal);
+      });
+
+      const ivaRate = num(document.getElementById("ivaRate").value);
+      const iva = totalNet * ivaRate / 100;
+      const showIva = document.getElementById("showIva").checked;
+
+      document.getElementById("totalNet").textContent = euro.format(totalNet);
+      document.getElementById("totalIva").textContent = euro.format(showIva ? iva : 0);
+      document.getElementById("totalGrand").textContent = euro.format(showIva ? totalNet + iva : totalNet);
+      renderConditions();
+    }
+
+    function renderConditions() {
+      const activeConditions = categories
+        .filter(cat => state.active[cat.id] && state.rows[cat.id].some(r => r.description || num(r.price) || num(r.qty)))
+        .map(cat => `<p class="condition-item"><strong>${cat.label}:</strong> ${cat.condition}</p>`);
+      conditionsList.innerHTML = activeConditions.length ? activeConditions.join("") : "<p class='condition-item'>Nessuna sezione attiva.</p>";
+    }
+
+    function updateDisplayOptions() {
+      const body = document.body;
+      body.classList.toggle("hide-unit-price", !document.getElementById("showUnitPrice").checked);
+      body.classList.toggle("hide-discount", !document.getElementById("showDiscount").checked);
+      body.classList.toggle("hide-subtotals", !document.getElementById("showSubtotals").checked);
+      body.classList.toggle("hide-totals", !document.getElementById("showTotals").checked);
+      body.classList.toggle("hide-iva", !document.getElementById("showIva").checked);
+      body.classList.toggle("hide-actions", document.getElementById("cleanMode").checked);
+    }
+
+    function resetPreventivo() {
+      if (!confirm("Creare un nuovo preventivo? I dati correnti verranno eliminati.")) return;
+      categories.forEach((cat, index) => {
+        state.active[cat.id] = index < 2;
+        state.rows[cat.id] = [{ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0 }];
+      });
+      document.getElementById("quoteNumber").value = "001-2026";
+      document.getElementById("quoteDate").value = todayISO();
+      document.getElementById("freeNotes").value = "";
+      render();
+      savePreventivo();
+    }
+
+    function addOneRowPerSection() {
+      syncFromDOM();
+      categories.forEach(cat => {
+        if (state.active[cat.id]) state.rows[cat.id].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0 });
+      });
+      render();
+      savePreventivo();
+    }
+
+    function printPDF() {
+      syncFromDOM();
+      calculate();
+      document.getElementById("cleanMode").checked = true;
+      updateDisplayOptions();
+      setTimeout(() => window.print(), 80);
+    }
+
+    function togglePreview() {
+      const clean = document.getElementById("cleanMode");
+      clean.checked = !clean.checked;
+      updateDisplayOptions();
+    }
+
+    document.querySelectorAll(".logo-check").forEach(input => input.addEventListener("change", () => { renderLogos(); savePreventivo(); }));
+    document.getElementById("showUnitPrice").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
+    document.getElementById("showDiscount").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
+    document.getElementById("showSubtotals").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
+    document.getElementById("showTotals").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
+    document.getElementById("showIva").addEventListener("change", () => { updateDisplayOptions(); calculate(); savePreventivo(); });
+    document.getElementById("ivaRate").addEventListener("input", () => { calculate(); savePreventivo(); });
+    document.getElementById("cleanMode").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
+    document.getElementById("resetBtn").addEventListener("click", resetPreventivo);
+    document.getElementById("addAllBtn").addEventListener("click", addOneRowPerSection);
+    document.getElementById("previewBtn").addEventListener("click", togglePreview);
+    document.getElementById("printBtn").addEventListener("click", printPDF);
+    document.getElementById("quoteNumber").addEventListener("input", savePreventivo);
+    document.getElementById("quoteDate").addEventListener("change", savePreventivo);
+    document.getElementById("freeNotes").addEventListener("input", savePreventivo);
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+      });
+    }
+
+    loadCatalogData().then(() => {
+      initState();
+      loadPreventivo();
+      render();
+    });
+  </script>
+</body>
+</html>
