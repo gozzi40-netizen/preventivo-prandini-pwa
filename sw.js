@@ -1,4 +1,4 @@
-const CACHE_NAME = "preventivo-prandini-v2";
+const CACHE_NAME = "preventivo-prandini-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
