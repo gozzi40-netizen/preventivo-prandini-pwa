@@ -1,4 +1,4 @@
-const CACHE_NAME = "preventivo-bau-group-v12-upload";
+const CACHE_NAME = "preventivo-bau-group-v13";
 const APP_SHELL = [
   "./",
   "./index.html",
