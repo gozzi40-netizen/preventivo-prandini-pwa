@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Preventivo Commerciale Smart - Catalogo</title>
+  <title>Preventivo Commerciale Smart - Prandini</title>
   <meta name="theme-color" content="#b58a1f" />
   <meta name="description" content="Preventivo commerciale Prandini installabile e utilizzabile offline." />
   <link rel="manifest" href="manifest.webmanifest" />
@@ -335,6 +335,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
+      table-layout: auto;
     }
 
     th {
@@ -377,7 +378,8 @@
     }
 
     .catalog-select,
-    .um-select {
+    .um-select,
+    .iva-select {
       width: 100%;
       min-height: 36px;
       border: 1px solid var(--line);
@@ -513,6 +515,7 @@
     body.hide-subtotals .subtotal-row,
     body.hide-totals .totals,
     body.hide-iva .iva-line,
+    body.hide-iva .col-iva,
     body.hide-actions .col-actions,
     body.hide-actions .section-actions {
       display: none !important;
@@ -623,8 +626,9 @@
       tr[data-row] td:nth-child(3)::before { content: "Q.tà"; }
       tr[data-row] td:nth-child(4)::before { content: "Prezzo"; }
       tr[data-row] td:nth-child(5)::before { content: "Sconto"; }
-      tr[data-row] td:nth-child(6)::before { content: "Netto"; }
-      tr[data-row] td:nth-child(7)::before { content: ""; }
+      tr[data-row] td:nth-child(6)::before { content: "Cod. IVA"; }
+      tr[data-row] td:nth-child(7)::before { content: "Netto"; }
+      tr[data-row] td:nth-child(8)::before { content: ""; }
 
       .cell-input,
       textarea.cell-input,
@@ -800,13 +804,14 @@
 
       td { padding: 0 !important; }
 
-      th:nth-child(1), td:nth-child(1) { width: 42% !important; }
+      th:nth-child(1), td:nth-child(1) { width: 38% !important; }
       th:nth-child(2), td:nth-child(2) { width: 8% !important; }
       th:nth-child(3), td:nth-child(3) { width: 9% !important; }
-      th:nth-child(4), td:nth-child(4) { width: 14% !important; }
-      th:nth-child(5), td:nth-child(5) { width: 11% !important; }
-      th:nth-child(6), td:nth-child(6) { width: 13% !important; }
-      th:nth-child(7), td:nth-child(7) { width: 0 !important; display: none !important; }
+      th:nth-child(4), td:nth-child(4) { width: 13% !important; }
+      th:nth-child(5), td:nth-child(5) { width: 10% !important; }
+      th:nth-child(6), td:nth-child(6) { width: 9% !important; }
+      th:nth-child(7), td:nth-child(7) { width: 11% !important; }
+      th:nth-child(8), td:nth-child(8) { width: 0 !important; display: none !important; }
 
       .cell-input,
       textarea.cell-input,
@@ -820,6 +825,16 @@
       .catalog-select,
       .um-select {
         display: none !important;
+      }
+
+      .iva-select {
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        appearance: none !important;
+        padding: 3px 5px !important;
+        font-size: 9.5px !important;
+        font-weight: 850 !important;
       }
 
       .catalog-picker {
@@ -879,6 +894,43 @@
         font-size: 9px !important;
         line-height: 1.3 !important;
       }
+
+      body.hide-discount.hide-iva th:nth-child(1),
+      body.hide-discount.hide-iva td:nth-child(1) { width: 48% !important; }
+      body.hide-discount.hide-iva th:nth-child(2),
+      body.hide-discount.hide-iva td:nth-child(2) { width: 9% !important; }
+      body.hide-discount.hide-iva th:nth-child(3),
+      body.hide-discount.hide-iva td:nth-child(3) { width: 10% !important; }
+      body.hide-discount.hide-iva th:nth-child(4),
+      body.hide-discount.hide-iva td:nth-child(4) { width: 15% !important; }
+      body.hide-discount.hide-iva th:nth-child(7),
+      body.hide-discount.hide-iva td:nth-child(7) { width: 18% !important; }
+
+      body.hide-discount:not(.hide-iva) th:nth-child(1),
+      body.hide-discount:not(.hide-iva) td:nth-child(1) { width: 43% !important; }
+      body.hide-discount:not(.hide-iva) th:nth-child(2),
+      body.hide-discount:not(.hide-iva) td:nth-child(2) { width: 8% !important; }
+      body.hide-discount:not(.hide-iva) th:nth-child(3),
+      body.hide-discount:not(.hide-iva) td:nth-child(3) { width: 9% !important; }
+      body.hide-discount:not(.hide-iva) th:nth-child(4),
+      body.hide-discount:not(.hide-iva) td:nth-child(4) { width: 14% !important; }
+      body.hide-discount:not(.hide-iva) th:nth-child(6),
+      body.hide-discount:not(.hide-iva) td:nth-child(6) { width: 10% !important; }
+      body.hide-discount:not(.hide-iva) th:nth-child(7),
+      body.hide-discount:not(.hide-iva) td:nth-child(7) { width: 16% !important; }
+
+      body:not(.hide-discount).hide-iva th:nth-child(1),
+      body:not(.hide-discount).hide-iva td:nth-child(1) { width: 43% !important; }
+      body:not(.hide-discount).hide-iva th:nth-child(2),
+      body:not(.hide-discount).hide-iva td:nth-child(2) { width: 8% !important; }
+      body:not(.hide-discount).hide-iva th:nth-child(3),
+      body:not(.hide-discount).hide-iva td:nth-child(3) { width: 9% !important; }
+      body:not(.hide-discount).hide-iva th:nth-child(4),
+      body:not(.hide-discount).hide-iva td:nth-child(4) { width: 14% !important; }
+      body:not(.hide-discount).hide-iva th:nth-child(5),
+      body:not(.hide-discount).hide-iva td:nth-child(5) { width: 11% !important; }
+      body:not(.hide-discount).hide-iva th:nth-child(7),
+      body:not(.hide-discount).hide-iva td:nth-child(7) { width: 15% !important; }
     }
   </style>
 </head>
@@ -926,10 +978,6 @@
         <label class="check"><input type="checkbox" id="showSubtotals" checked /> Mostra subtotali</label>
         <label class="check"><input type="checkbox" id="showTotals" checked /> Mostra totale finale</label>
         <label class="check"><input type="checkbox" id="showIva" /> Mostra IVA</label>
-        <div class="field">
-          <label for="ivaRate">Aliquota IVA %</label>
-          <input id="ivaRate" type="number" min="0" step="1" value="22" />
-        </div>
         <label class="check"><input type="checkbox" id="cleanMode" /> Nascondi pulsanti in pagina</label>
       </section>
 
@@ -1047,10 +1095,15 @@
       }
     ];
 
+    const IVA_CODES = [
+      { value: "22", label: "22%" },
+      { value: "10", label: "10%" },
+      { value: "4", label: "4%" },
+      { value: "0", label: "Esente" }
+    ];
+
     const state = { rows: {}, active: {} };
-    const STORAGE_KEY = "preventivo-prandini-smart-catalogo";
-    let unitsCatalog = [];
-    let itemsCatalog = [];
+    const STORAGE_KEY = "preventivo-prandini-smart";
     const euro = new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" });
 
     const brandLogos = document.getElementById("brandLogos");
@@ -1070,29 +1123,9 @@
     function initState() {
       categories.forEach((cat, index) => {
         state.active[cat.id] = index < 2;
-        state.rows[cat.id] = cat.defaultRows.map(([description, um, qty, price, discount]) => ({ id: uid(), description, um, qty, price, discount }));
+        state.rows[cat.id] = cat.defaultRows.map(([description, um, qty, price, discount]) => ({ id: uid(), description, um, qty, price, discount, ivaCode: "22" }));
       });
       document.getElementById("quoteDate").value = todayISO();
-    }
-
-    async function loadCatalogData() {
-      try {
-        const [unitsResponse, itemsResponse] = await Promise.all([
-          fetch("unita-misura.json"),
-          fetch("catalogo.json")
-        ]);
-        if (!unitsResponse.ok || !itemsResponse.ok) throw new Error("Catalogo non disponibile");
-        unitsCatalog = await unitsResponse.json();
-        itemsCatalog = await itemsResponse.json();
-      } catch {
-        unitsCatalog = [
-          { value: "MQ", label: "MQ - metri quadri" },
-          { value: "ML", label: "ML - metri lineari" },
-          { value: "PZ", label: "PZ - pezzi" },
-          { value: "CT", label: "CT - corpo totale" }
-        ];
-        itemsCatalog = [];
-      }
     }
 
     function savePreventivo() {
@@ -1108,7 +1141,6 @@
           showSubtotals: document.getElementById("showSubtotals").checked,
           showTotals: document.getElementById("showTotals").checked,
           showIva: document.getElementById("showIva").checked,
-          ivaRate: document.getElementById("ivaRate").value,
           cleanMode: document.getElementById("cleanMode").checked
         },
         active: state.active,
@@ -1185,12 +1217,6 @@
       section.className = "section";
       section.dataset.section = cat.id;
       section.innerHTML = `
-        <datalist id="catalogo-${cat.id}">
-          ${itemsCatalog
-            .filter(item => item.categoria === cat.id)
-            .map(item => `<option value="${escapeHTML(item.descrizione)}"></option>`)
-            .join("")}
-        </datalist>
         <div class="section-head" style="background:${cat.color}">
           <div class="section-title">${cat.label}</div>
           <div class="section-actions">
@@ -1206,6 +1232,7 @@
               <th>Q.tà</th>
               <th class="col-price">Prezzo unit.</th>
               <th class="col-discount">Sconto %</th>
+              <th class="col-iva">Cod. IVA</th>
               <th>Netto</th>
               <th class="col-actions"></th>
             </tr>
@@ -1213,7 +1240,7 @@
           <tbody>
             ${state.rows[cat.id].map(row => createRowHTML(cat.id, row)).join("")}
             <tr class="subtotal-row">
-              <td colspan="5">Subtotale ${cat.label}</td>
+              <td colspan="6">Subtotale ${cat.label}</td>
               <td class="subtotal-value" data-subtotal="${cat.id}">€ 0,00</td>
               <td class="col-actions"></td>
             </tr>
@@ -1226,50 +1253,23 @@
     function createRowHTML(catId, row) {
       return `
         <tr data-row="${row.id}" data-cat="${catId}">
-          <td>
-            <div class="catalog-picker">
-              <select class="catalog-select" data-catalog-select>
-                ${createCatalogOptions(catId, row.description)}
-              </select>
-              <input class="cell-input" data-field="description" value="${escapeHTML(row.description || "")}" />
-            </div>
-          </td>
-          <td>
-            <div class="catalog-picker">
-              <select class="um-select" data-um-select>
-                ${createUnitOptions(row.um)}
-              </select>
-              <input class="cell-input" data-field="um" value="${escapeHTML(row.um || "")}" />
-            </div>
-          </td>
+          <td><input class="cell-input" data-field="description" value="${escapeHTML(row.description || "")}" /></td>
+          <td><input class="cell-input" data-field="um" value="${escapeHTML(row.um || "")}" /></td>
           <td><input class="cell-input number" type="number" min="0" step="0.01" data-field="qty" value="${num(row.qty)}" /></td>
           <td class="col-price"><input class="cell-input number" type="number" step="0.01" data-field="price" value="${num(row.price)}" /></td>
           <td class="col-discount"><input class="cell-input number" type="number" min="0" max="100" step="0.01" data-field="discount" value="${num(row.discount)}" /></td>
+          <td class="col-iva"><select class="iva-select" data-field="ivaCode">${createIvaOptions(row.ivaCode)}</select></td>
           <td class="money-cell" data-net="${row.id}">€ 0,00</td>
           <td class="col-actions"><button type="button" class="delete-row" data-delete-row="${row.id}" title="Elimina riga">×</button></td>
         </tr>
       `;
     }
 
-    function createCatalogOptions(catId, selectedDescription = "") {
-      const options = itemsCatalog.filter(item => item.categoria === catId);
-      return [
-        '<option value="">Scegli da catalogo</option>',
-        ...options.map(item => {
-          const selected = item.descrizione === selectedDescription ? " selected" : "";
-          return `<option value="${escapeHTML(item.descrizione)}"${selected}>${escapeHTML(item.descrizione)}</option>`;
-        })
-      ].join("");
-    }
-
-    function createUnitOptions(selectedUnit = "") {
-      return [
-        '<option value="">U.M.</option>',
-        ...unitsCatalog.map(unit => {
-          const selected = unit.value === selectedUnit ? " selected" : "";
-          return `<option value="${escapeHTML(unit.value)}"${selected}>${escapeHTML(unit.label || unit.value)}</option>`;
-        })
-      ].join("");
+    function createIvaOptions(selectedCode = "22") {
+      return IVA_CODES.map(code => {
+        const selected = code.value === String(selectedCode || "22") ? " selected" : "";
+        return `<option value="${escapeHTML(code.value)}"${selected}>${escapeHTML(code.label)}</option>`;
+      }).join("");
     }
 
     function escapeHTML(value) {
@@ -1295,60 +1295,12 @@
           const field = input.dataset.field;
           row[field] = ["qty", "price", "discount"].includes(field) ? num(input.value) : input.value;
         });
+        if (!row.ivaCode) row.ivaCode = "22";
       });
-    }
-
-    function applyCatalogMatch(input) {
-      const tr = input.closest("tr[data-row]");
-      if (!tr) return;
-      const item = itemsCatalog.find(entry =>
-        entry.categoria === tr.dataset.cat &&
-        entry.descrizione.toLowerCase() === input.value.trim().toLowerCase()
-      );
-      if (!item) return;
-
-      const umInput = tr.querySelector('[data-field="um"]');
-      const priceInput = tr.querySelector('[data-field="price"]');
-      if (umInput && item.um) umInput.value = item.um;
-      if (priceInput && item.prezzo !== undefined) priceInput.value = num(item.prezzo);
-      syncFromDOM();
-      calculate();
-    }
-
-    function applyCatalogSelection(select) {
-      const tr = select.closest("tr[data-row]");
-      if (!tr || !select.value) return;
-      const input = tr.querySelector('[data-field="description"]');
-      if (input) input.value = select.value;
-      applyCatalogMatch(input);
-      savePreventivo();
-    }
-
-    function applyUnitSelection(select) {
-      const tr = select.closest("tr[data-row]");
-      if (!tr || !select.value) return;
-      const input = tr.querySelector('[data-field="um"]');
-      if (input) input.value = select.value;
-      syncFromDOM();
-      calculate();
-      savePreventivo();
-    }
-
-    function renderUnitDatalist() {
-      let datalist = document.getElementById("unitaMisuraList");
-      if (!datalist) {
-        datalist = document.createElement("datalist");
-        datalist.id = "unitaMisuraList";
-        document.body.appendChild(datalist);
-      }
-      datalist.innerHTML = unitsCatalog
-        .map(unit => `<option value="${escapeHTML(unit.value)}">${escapeHTML(unit.label || unit.value)}</option>`)
-        .join("");
     }
 
     function render() {
       renderLogos();
-      renderUnitDatalist();
       sectionToggles.innerHTML = "";
       categories.forEach(cat => sectionToggles.appendChild(createToggle(cat)));
       sectionsContainer.innerHTML = "";
@@ -1393,37 +1345,37 @@
 
       document.querySelectorAll("[data-field]").forEach(input => {
         input.addEventListener("input", () => {
-          if (input.dataset.field === "description") applyCatalogMatch(input);
+          syncFromDOM();
+          calculate();
+          savePreventivo();
+        });
+        input.addEventListener("change", () => {
           syncFromDOM();
           calculate();
           savePreventivo();
         });
       });
-
-      document.querySelectorAll("[data-catalog-select]").forEach(select => {
-        select.addEventListener("change", () => applyCatalogSelection(select));
-      });
-
-      document.querySelectorAll("[data-um-select]").forEach(select => {
-        select.addEventListener("change", () => applyUnitSelection(select));
-      });
     }
 
     function addRow(catId, shouldRender = true) {
       syncFromDOM();
-      state.rows[catId].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0 });
+      state.rows[catId].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0, ivaCode: "22" });
       if (shouldRender) render();
       savePreventivo();
     }
 
     function calculate() {
       let totalNet = 0;
+      let totalIva = 0;
       categories.forEach(cat => {
         if (!state.active[cat.id]) return;
         let subtotal = 0;
         state.rows[cat.id].forEach(row => {
+          if (!row.ivaCode) row.ivaCode = "22";
           const net = calcRow(row);
+          const rowIva = net * num(row.ivaCode) / 100;
           subtotal += net;
+          totalIva += rowIva;
           const netCell = document.querySelector(`[data-net="${row.id}"]`);
           if (netCell) netCell.textContent = euro.format(net);
         });
@@ -1432,13 +1384,11 @@
         if (subtotalCell) subtotalCell.textContent = euro.format(subtotal);
       });
 
-      const ivaRate = num(document.getElementById("ivaRate").value);
-      const iva = totalNet * ivaRate / 100;
       const showIva = document.getElementById("showIva").checked;
 
       document.getElementById("totalNet").textContent = euro.format(totalNet);
-      document.getElementById("totalIva").textContent = euro.format(showIva ? iva : 0);
-      document.getElementById("totalGrand").textContent = euro.format(showIva ? totalNet + iva : totalNet);
+      document.getElementById("totalIva").textContent = euro.format(showIva ? totalIva : 0);
+      document.getElementById("totalGrand").textContent = euro.format(showIva ? totalNet + totalIva : totalNet);
       renderConditions();
     }
 
@@ -1457,13 +1407,25 @@
       body.classList.toggle("hide-totals", !document.getElementById("showTotals").checked);
       body.classList.toggle("hide-iva", !document.getElementById("showIva").checked);
       body.classList.toggle("hide-actions", document.getElementById("cleanMode").checked);
+      updateSubtotalColspans();
+    }
+
+    function updateSubtotalColspans() {
+      let columnsBeforeNet = 3;
+      if (document.getElementById("showUnitPrice").checked) columnsBeforeNet += 1;
+      if (document.getElementById("showDiscount").checked) columnsBeforeNet += 1;
+      if (document.getElementById("showIva").checked) columnsBeforeNet += 1;
+
+      document.querySelectorAll(".subtotal-row td:first-child").forEach(cell => {
+        cell.colSpan = columnsBeforeNet;
+      });
     }
 
     function resetPreventivo() {
       if (!confirm("Creare un nuovo preventivo? I dati correnti verranno eliminati.")) return;
       categories.forEach((cat, index) => {
         state.active[cat.id] = index < 2;
-        state.rows[cat.id] = [{ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0 }];
+        state.rows[cat.id] = [{ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0, ivaCode: "22" }];
       });
       document.getElementById("quoteNumber").value = "001-2026";
       document.getElementById("quoteDate").value = todayISO();
@@ -1475,7 +1437,7 @@
     function addOneRowPerSection() {
       syncFromDOM();
       categories.forEach(cat => {
-        if (state.active[cat.id]) state.rows[cat.id].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0 });
+        if (state.active[cat.id]) state.rows[cat.id].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0, ivaCode: "22" });
       });
       render();
       savePreventivo();
@@ -1501,7 +1463,6 @@
     document.getElementById("showSubtotals").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
     document.getElementById("showTotals").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
     document.getElementById("showIva").addEventListener("change", () => { updateDisplayOptions(); calculate(); savePreventivo(); });
-    document.getElementById("ivaRate").addEventListener("input", () => { calculate(); savePreventivo(); });
     document.getElementById("cleanMode").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
     document.getElementById("resetBtn").addEventListener("click", resetPreventivo);
     document.getElementById("addAllBtn").addEventListener("click", addOneRowPerSection);
@@ -1517,11 +1478,9 @@
       });
     }
 
-    loadCatalogData().then(() => {
-      initState();
-      loadPreventivo();
-      render();
-    });
+    initState();
+    loadPreventivo();
+    render();
   </script>
 </body>
 </html>

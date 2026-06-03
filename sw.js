@@ -1,11 +1,11 @@
-const CACHE_NAME = "preventivo-prandini-v3";
+const CACHE_NAME = "preventivo-bau-group-v12-upload";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./index-catalogo.html",
+  "./index-pavinord.html",
   "./manifest.webmanifest",
-  "./catalogo.json",
-  "./unita-misura.json",
+  "./pavinord-lavorazioni.json",
   "./icons/icon.svg"
 ];
 

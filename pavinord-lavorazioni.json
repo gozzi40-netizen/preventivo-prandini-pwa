@@ -1,0 +1,193 @@
+[
+  {
+    "sezione": "sottofondo",
+    "titolo": "Sottofondo alleggerito",
+    "addLabel": "Altre aggiunte",
+    "addOptions": [
+      "€ / corpo",
+      "€ / mc"
+    ],
+    "addDefaultOption": "€ / mc",
+    "righe": [
+      {
+        "descrizione": "Sottofondo Alleggerito",
+        "dettaglio": "",
+        "opzione": "€ / corpo",
+        "opzioni": [
+          "€ / corpo",
+          "€ / mc"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "sezione": "massetto",
+    "titolo": "Massetto tradizionale",
+    "addLabel": "Altre aggiunte",
+    "addOptions": [
+      "€ / corpo",
+      "€ / mq",
+      "€ / mc",
+      "€ / cm / mq"
+    ],
+    "addDefaultOption": "€ / cm / mq",
+    "righe": [
+      {
+        "descrizione": "Massetto Tradizionale",
+        "descrizioneFissa": true,
+        "dettaglio": "(solo posa) fino a cm 6,00",
+        "opzione": "€ / corpo",
+        "opzioni": [
+          "€ / corpo",
+          "€ / mc"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      },
+      {
+        "descrizione": "Se spessore superiore a (cm)",
+        "descrizioneFissa": true,
+        "dettaglio": "oltre i cm 6,00",
+        "opzione": "€ / cm / mq",
+        "opzioneFissa": true,
+        "opzioni": [
+          "€ / cm / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      },
+      {
+        "descrizione": "Aggiunta di fibre strutturali",
+        "descrizioneFissa": true,
+        "dettaglio": "",
+        "opzione": "€ / mq",
+        "opzioneFissa": true,
+        "opzioni": [
+          "€ / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      },
+      {
+        "descrizione": "Aggiunta barriera a vapore e bande perimetrali",
+        "descrizioneFissa": true,
+        "dettaglio": "",
+        "opzione": "€ / mq",
+        "opzioneFissa": true,
+        "opzioni": [
+          "€ / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      },
+      {
+        "descrizione": "Aggiunta di additivo",
+        "descrizioneFissa": true,
+        "dettaglio": "",
+        "opzione": "€ / mq",
+        "opzioneFissa": true,
+        "opzioni": [
+          "€ / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      },
+      {
+        "descrizione": "Se spessore superiore a (cm)",
+        "descrizioneFissa": true,
+        "dettaglio": "",
+        "opzione": "€ / mq",
+        "opzioneFissa": true,
+        "opzioni": [
+          "€ / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "sezione": "livellina",
+    "titolo": "Massetto autolivellante e livellina",
+    "addLabel": "Altre aggiunte",
+    "addOptions": [
+      "€ / corpo",
+      "€ / mq",
+      "€ / cm / mq"
+    ],
+    "addDefaultOption": "€ / mq",
+    "righe": [
+      {
+        "descrizione": "Livellina",
+        "descrizioneOpzioni": [
+          "Massetto autolivellante con mezzo d'opera",
+          "Massetto autolivellante con silo",
+          "Livellina"
+        ],
+        "dettaglio": "",
+        "opzione": "€ / corpo",
+        "opzioni": [
+          "€ / corpo",
+          "€ / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      },
+      {
+        "descrizione": "Se spessore superiore a (cm)",
+        "descrizioneFissa": true,
+        "dettaglio": "",
+        "opzione": "€ / cm / mq",
+        "opzioneFissa": true,
+        "opzioni": [
+          "€ / cm / mq"
+        ],
+        "prezzo": "",
+        "removable": false,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "sezione": "altre",
+    "titolo": "Altre lavorazioni",
+    "addLabel": "",
+    "addOptions": [
+      "€ / giorno",
+      "€ / unità",
+      "€ / corpo",
+      "€ / mq",
+      "€ / mc",
+      "€ / cm / mq"
+    ],
+    "addDefaultOption": "€ / mq",
+    "righe": [
+      {
+        "descrizione": "",
+        "dettaglio": "",
+        "opzione": "€ / mq",
+        "opzioni": [
+          "€ / giorno",
+          "€ / unità",
+          "€ / corpo",
+          "€ / mq",
+          "€ / mc",
+          "€ / cm / mq"
+        ],
+        "prezzo": "",
+        "removable": true,
+        "quantita": 1
+      }
+    ]
+  }
+]

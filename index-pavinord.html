@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preventivo Pavinord</title>
+  <meta name="theme-color" content="#1d5e8c" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --ink: #20242c;
+      --muted: #697180;
+      --line: #d9dee7;
+      --paper: #ffffff;
+      --soft: #f6f7f9;
+      --blue: #1d5e8c;
+      --red: #e62b22;
+      --danger: #b33a31;
+      --shadow: 0 18px 50px rgba(25, 32, 44, .10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #eef1f5;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button, input, textarea, select { font: inherit; }
+
+    .app {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-title span {
+      display: block;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .toolbar-title strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 22px;
+      letter-spacing: -.03em;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 2px 10px rgba(25, 32, 44, .04);
+      text-decoration: none;
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .btn.blue {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .sheet {
+      background: var(--paper);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 24px;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 3px solid var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .brand-dynamic {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo-card {
+      height: 48px;
+      min-width: 130px;
+      max-width: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border: 1px solid rgba(29, 94, 140, .16);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .brand-logo-card img {
+      display: block;
+      max-height: 34px;
+      max-width: 170px;
+      object-fit: contain;
+    }
+
+    .quote-meta,
+    .site-grid,
+    .controls {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quote-meta { grid-template-columns: 1fr 1fr; }
+
+    .site-grid {
+      grid-template-columns: 1.2fr 1fr 1fr;
+      margin: 0 0 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--soft);
+    }
+
+    .site-grid .wide { grid-column: span 2; }
+
+    .field label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select,
+    .cell-input,
+    .cell-select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      outline: none;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .field input:required:invalid {
+      border-color: rgba(179, 58, 49, .65);
+      box-shadow: 0 0 0 3px rgba(179, 58, 49, .10);
+    }
+
+    .controls {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 0 0 22px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--soft);
+    }
+
+    .sections-panel {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 22px;
+    }
+
+    .section-toggle {
+      min-height: 66px;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(25, 32, 44, .03);
+    }
+
+    .section-toggle input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--red);
+    }
+
+    .section-toggle strong {
+      display: block;
+      font-size: 11px;
+      line-height: 1.25;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .section-toggle span {
+      display: block;
+      width: 46px;
+      height: 5px;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: var(--red);
+    }
+
+    .required-message {
+      margin: -6px 0 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(179, 58, 49, .24);
+      border-radius: 12px;
+      background: rgba(179, 58, 49, .08);
+      color: var(--danger);
+      font-weight: 850;
+      font-size: 13px;
+    }
+
+    .required-message.is-hidden { display: none; }
+
+    body.hide-actions .controls,
+    body.hide-actions .sections-panel,
+    body.hide-actions .small-btn,
+    body.hide-actions .delete-row {
+      display: none !important;
+    }
+
+    .work-area.is-locked {
+      opacity: .45;
+      pointer-events: none;
+      filter: grayscale(.1);
+    }
+
+    .work-section {
+      margin: 18px 0 24px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--red);
+      color: #fff;
+    }
+
+    .section-title {
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .small-btn {
+      border: 1px solid rgba(255,255,255,.55);
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      border-radius: 999px;
+      padding: 6px 9px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th {
+      background: #282d35;
+      color: #f6dc91;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
+      padding: 10px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      white-space: nowrap;
+    }
+
+    td {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 6px;
+      background: #fff;
+      vertical-align: top;
+    }
+
+    th:nth-child(1), td:nth-child(1) { width: 27%; }
+    th:nth-child(2), td:nth-child(2) { width: 29%; }
+    th:nth-child(3), td:nth-child(3) { width: 16%; }
+    th:nth-child(4), td:nth-child(4) { width: 9%; }
+    th:nth-child(5), td:nth-child(5) { width: 11%; }
+    th:nth-child(6), td:nth-child(6) { width: 12%; }
+    th:nth-child(7), td:nth-child(7) { width: 4%; }
+
+    .label-cell {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      font-weight: 900;
+      line-height: 1.25;
+      padding: 6px 2px;
+    }
+
+    .cell-input.price,
+    .cell-input.quantity,
+    .line-total {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .line-total {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-weight: 900;
+      padding: 6px 2px;
+      white-space: nowrap;
+    }
+
+    .cell-select.locked {
+      appearance: none;
+      color: var(--ink);
+      font-weight: 900;
+      background: #f8f9fb;
+    }
+
+    .delete-row {
+      width: 100%;
+      min-height: 39px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fafafa;
+      color: #9aa1ad;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .delete-row:hover { color: var(--danger); }
+
+    .notes-total {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .notes-total textarea {
+      min-height: 98px;
+      resize: vertical;
+    }
+
+    .totals {
+      border-top: 2px solid var(--blue);
+      padding-top: 14px;
+    }
+
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 8px 0;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-line span:first-child {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+    }
+
+    .total-line.grand {
+      color: var(--blue);
+      font-size: 22px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 5px;
+    }
+
+    .print-help {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    @media screen and (max-width: 900px) {
+      .app { padding: 12px; }
+      .toolbar, .header, .site-grid, .controls, .sections-panel, .notes-total { grid-template-columns: 1fr; display: grid; }
+      .site-grid .wide { grid-column: auto; }
+      .toolbar-actions { display: grid; grid-template-columns: 1fr 1fr; }
+      .btn { width: 100%; text-align: center; }
+      .sheet { padding: 16px; }
+      .quote-meta { grid-template-columns: 1fr; }
+      table, thead, tbody, tr, th, td { display: block; width: 100% !important; }
+      thead { display: none; }
+      tr[data-row] { padding: 10px; border-bottom: 1px solid var(--line); }
+      tr[data-row] td { border: 0; padding: 5px 0; }
+      tr[data-row] td::before {
+        display: block;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        font-size: 10px;
+        font-weight: 900;
+        margin-bottom: 4px;
+      }
+      tr[data-row] td:nth-child(1)::before { content: "Lavorazione"; }
+      tr[data-row] td:nth-child(2)::before { content: "Campo"; }
+      tr[data-row] td:nth-child(3)::before { content: "U.M. prezzo"; }
+      tr[data-row] td:nth-child(4)::before { content: "Q.tà"; }
+      tr[data-row] td:nth-child(5)::before { content: "Prezzo"; }
+      tr[data-row] td:nth-child(6)::before { content: "Importo"; }
+      tr[data-row] td:nth-child(7)::before { content: ""; }
+    }
+
+    @page { size: A4; margin: 10mm; }
+
+    @media print {
+      html, body {
+        width: 210mm;
+        min-height: 297mm;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .app { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+      .toolbar, .controls, .sections-panel, .small-btn, .delete-row, .required-message, .print-help { display: none !important; }
+      .sheet {
+        width: 190mm !important;
+        max-width: 190mm !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      .header {
+        grid-template-columns: 1fr !important;
+        gap: 6mm !important;
+        margin-bottom: 8px !important;
+        padding-bottom: 8px !important;
+        border-bottom: 2px solid var(--blue) !important;
+      }
+      .quote-meta, .site-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6mm !important;
+      }
+      .site-grid {
+        padding: 0 0 5mm !important;
+        border: 0 !important;
+        border-bottom: 1px solid var(--line) !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+      }
+      .site-grid .wide { grid-column: span 2 !important; }
+      .field label { font-size: 8.5px !important; margin-bottom: 3px !important; }
+      .field input, .field textarea, .field select, .cell-input, .cell-select {
+        border: 0 !important;
+        border-radius: 0 !important;
+        padding: 2px 3px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        font-size: 9.2px !important;
+      }
+      .work-area.is-locked { opacity: 1 !important; pointer-events: auto !important; filter: none !important; }
+      .work-section {
+        margin: 8px 0 11px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .section-head { padding: 5px 8px !important; }
+      .section-title { font-size: 9px !important; }
+      th { padding: 4px 5px !important; font-size: 8px !important; }
+      td { padding: 2px 4px !important; }
+      .label-cell { min-height: 0 !important; padding: 2px 0 !important; font-size: 9.2px !important; }
+      .line-total {
+        min-height: 0 !important;
+        padding: 2px 0 !important;
+        font-size: 9.2px !important;
+      }
+      .notes-total {
+        grid-template-columns: 1fr 64mm !important;
+        gap: 8mm !important;
+        margin-top: 10px !important;
+      }
+      .total-line span:first-child { font-size: 8.5px !important; }
+      .total-line.grand { font-size: 14px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <span>Pavinord</span>
+        <strong>Preventivo lavorazioni tecniche</strong>
+      </div>
+      <div class="toolbar-actions">
+        <a class="btn" href="index-catalogo.html">Prandini</a>
+        <button class="btn" id="resetBtn" type="button">Nuovo preventivo</button>
+        <button class="btn primary" id="previewBtn" type="button">Vista PDF pulita</button>
+        <button class="btn blue" id="printBtn" type="button" disabled>Esporta PDF per Delera</button>
+      </div>
+    </div>
+
+    <main class="sheet">
+      <section class="header">
+        <div class="brand-dynamic" aria-label="Loghi">
+          <div class="brand-logo-card"><img src="https://baugroup.it/wp-content/uploads/2024/12/Logo-Bau--300x153.png" alt="Bau Group" /></div>
+          <div class="brand-logo-card"><img src="https://baugroup.it/wp-content/uploads/2024/12/Logo-Pavinord@3x.png" alt="Pavinord" /></div>
+        </div>
+        <div class="quote-meta">
+          <div class="field">
+            <label for="quoteNumber">Preventivo N°</label>
+            <input id="quoteNumber" value="PAV-001-2026" />
+          </div>
+          <div class="field">
+            <label for="quoteDate">Data</label>
+            <input id="quoteDate" type="date" />
+          </div>
+        </div>
+      </section>
+
+      <section class="site-grid" aria-label="Dati cantiere">
+        <div class="field wide">
+          <label for="siteAddress">Indirizzo del cantiere *</label>
+          <input id="siteAddress" required placeholder="Es. Torri del Benaco (VR)" />
+        </div>
+        <div class="field">
+          <label for="siteOrder">Ordinativo *</label>
+          <input id="siteOrder" required placeholder="Descrizione ordinativo" />
+        </div>
+        <div class="field">
+          <label for="siteContact">Contatto di cantiere *</label>
+          <input id="siteContact" required placeholder="Nome e telefono" />
+        </div>
+        <div class="field">
+          <label for="siteType">Tipo di cantiere</label>
+          <select id="siteType">
+            <option>Cantiere esterno</option>
+            <option>Cantiere interno</option>
+            <option>Cantiere ad un piano alto</option>
+            <option>Cantiere esterno + interno</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="siteAccess">Ingresso cantiere</label>
+          <select id="siteAccess">
+            <option>Con mezzo d'opera</option>
+            <option>Con Turbosol</option>
+          </select>
+        </div>
+      </section>
+
+      <p class="required-message" id="requiredMessage">Compila indirizzo del cantiere, ordinativo e contatto di cantiere per iniziare il preventivo.</p>
+
+      <section class="controls" aria-label="Opzioni preventivo">
+        <div class="field">
+          <label for="pricingMode">Prezzi</label>
+          <select id="pricingMode">
+            <option value="total">Mostra totale</option>
+            <option value="no-total">Nascondi totale</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="showIva">IVA</label>
+          <select id="showIva">
+            <option value="no">Nascondi IVA</option>
+            <option value="yes">Mostra IVA</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ivaRate">Aliquota IVA %</label>
+          <input id="ivaRate" type="number" min="0" step="1" value="22" />
+        </div>
+        <div class="field">
+          <label for="cleanMode">Vista</label>
+          <select id="cleanMode">
+            <option value="edit">Modifica</option>
+            <option value="clean">PDF pulito</option>
+          </select>
+        </div>
+      </section>
+
+      <div class="work-area is-locked" id="workArea">
+        <section class="sections-panel" id="sectionToggles" aria-label="Sezioni Pavinord"></section>
+        <section id="sectionsContainer"></section>
+
+        <section class="notes-total">
+          <div class="field">
+            <label for="notes">Note</label>
+            <textarea id="notes" placeholder="Note tecniche, esclusioni, precisazioni operative..."></textarea>
+          </div>
+          <div class="totals">
+            <div class="total-line">
+              <span>Totale imponibile</span>
+              <strong id="totalNet">€ 0,00</strong>
+            </div>
+            <div class="total-line iva-line">
+              <span>IVA</span>
+              <strong id="totalIva">€ 0,00</strong>
+            </div>
+            <div class="total-line grand">
+              <span>Totale preventivo</span>
+              <strong id="totalGrand">€ 0,00</strong>
+            </div>
+            <div class="total-line grand">
+              <span>Corpo preventivo</span>
+              <strong>Pavinord</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <p class="print-help">Anagrafica e condizioni contrattuali restano gestite da Delera.</p>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "preventivo-pavinord-delera-v4";
+    const euro = new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" });
+    let sections = [];
+    let activeSections = {};
+
+    const sectionToggles = document.getElementById("sectionToggles");
+    const sectionsContainer = document.getElementById("sectionsContainer");
+    const totalNet = document.getElementById("totalNet");
+    const totalIva = document.getElementById("totalIva");
+    const totalGrand = document.getElementById("totalGrand");
+    const requiredFields = ["siteAddress", "siteOrder", "siteContact"];
+
+    function todayISO() {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    }
+
+    function uid() {
+      return Math.random().toString(36).slice(2) + Date.now().toString(36);
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;" }[char]));
+    }
+
+    function num(value) {
+      const normalized = String(value || "0").replace(",", ".");
+      const parsed = Number.parseFloat(normalized);
+      return Number.isFinite(parsed) ? parsed : 0;
+    }
+
+    async function loadSections() {
+      try {
+        const response = await fetch("pavinord-lavorazioni.json");
+        if (!response.ok) throw new Error("Catalogo Pavinord non disponibile");
+        const data = await response.json();
+        sections = data.map(section => ({
+          ...section,
+          righe: section.righe.map(row => ({ id: uid(), ...row }))
+        }));
+        activeSections = Object.fromEntries(sections.map(section => [section.sezione, true]));
+      } catch {
+        sections = [
+          {
+            sezione: "altre",
+            titolo: "Altre lavorazioni",
+            addLabel: "Altra lavorazione",
+            addOptions: ["€ / giorno", "€ / unità", "€ / corpo", "€ / mq", "€ / mc", "€ / cm / mq"],
+            righe: [
+              { id: uid(), descrizione: "", dettaglio: "", opzione: "€ / mq", quantita: 1, prezzo: "", removable: true }
+            ]
+          }
+        ];
+        activeSections = { altre: true };
+      }
+    }
+
+    function optionsForRow(row, section) {
+      return row.opzioni || section.addOptions || ["€ / corpo", "€ / mq"];
+    }
+
+    function renderOptionChoices(options, selected = "") {
+      return options.map(option => {
+        const isSelected = option === selected ? " selected" : "";
+        return `<option value="${escapeHTML(option)}"${isSelected}>${escapeHTML(option)}</option>`;
+      }).join("");
+    }
+
+    function renderDescription(row) {
+      if (Array.isArray(row.descrizioneOpzioni)) {
+        return `<select class="cell-select" data-field="descrizione">${renderOptionChoices(row.descrizioneOpzioni, row.descrizione)}</select>`;
+      }
+      if (row.descrizioneFissa) {
+        return `<div class="label-cell">${escapeHTML(row.descrizione || "")}</div>`;
+      }
+      return `<input class="cell-input" data-field="descrizione" value="${escapeHTML(row.descrizione || "")}" />`;
+    }
+
+    function renderOption(row, section) {
+      const options = optionsForRow(row, section);
+      const locked = Boolean(row.opzioneFissa);
+      return `<select class="cell-select ${locked ? "locked" : ""}" data-field="opzione" ${locked ? "disabled" : ""}>${renderOptionChoices(options, row.opzione)}</select>`;
+    }
+
+    function renderSectionToggles() {
+      sectionToggles.innerHTML = sections.map(section => `
+        <label class="section-toggle">
+          <input type="checkbox" data-section-toggle="${escapeHTML(section.sezione)}" ${activeSections[section.sezione] ? "checked" : ""} />
+          <div><strong>${escapeHTML(section.titolo)}</strong><span></span></div>
+        </label>
+      `).join("");
+    }
+
+    function renderSections() {
+      sectionsContainer.innerHTML = sections
+        .filter(section => activeSections[section.sezione])
+        .map(section => `
+        <article class="work-section" data-section="${escapeHTML(section.sezione)}">
+          <div class="section-head">
+            <div class="section-title">${escapeHTML(section.titolo)}</div>
+            <button class="small-btn" type="button" data-add-row="${escapeHTML(section.sezione)}">+ Riga</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Lavorazione</th>
+                <th>Campo</th>
+                <th>U.M. prezzo</th>
+                <th>Q.tà</th>
+                <th>Prezzo</th>
+                <th>Importo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${section.righe.map(row => renderRow(row, section)).join("")}
+            </tbody>
+          </table>
+        </article>
+      `).join("");
+      renderSectionToggles();
+      bindDynamicEvents();
+      calculate();
+      updateRequiredState();
+    }
+
+    function renderRow(row, section) {
+      return `
+        <tr data-row="${row.id}">
+          <td>${renderDescription(row)}</td>
+          <td><input class="cell-input" data-field="dettaglio" value="${escapeHTML(row.dettaglio || "")}" /></td>
+          <td>${renderOption(row, section)}</td>
+          <td><input class="cell-input quantity" type="number" min="0" step="0.01" data-field="quantita" value="${escapeHTML(row.quantita ?? 1)}" /></td>
+          <td><input class="cell-input price" data-field="prezzo" value="${escapeHTML(row.prezzo || "")}" /></td>
+          <td><div class="line-total" data-line-total="${row.id}">€ 0,00</div></td>
+          <td>${row.removable ? `<button class="delete-row" type="button" data-delete-row="${row.id}" title="Elimina riga">×</button>` : ""}</td>
+        </tr>
+      `;
+    }
+
+    function findRow(id) {
+      for (const section of sections) {
+        const row = section.righe.find(item => item.id === id);
+        if (row) return row;
+      }
+      return null;
+    }
+
+    function syncFromDOM() {
+      document.querySelectorAll("tr[data-row]").forEach(tr => {
+        const row = findRow(tr.dataset.row);
+        if (!row) return;
+        tr.querySelectorAll("[data-field]").forEach(input => {
+          row[input.dataset.field] = input.value;
+        });
+      });
+    }
+
+    function hasRequiredSiteData() {
+      return requiredFields.every(id => document.getElementById(id).value.trim());
+    }
+
+    function updateRequiredState() {
+      const ready = hasRequiredSiteData();
+      document.getElementById("workArea").classList.toggle("is-locked", !ready);
+      document.getElementById("requiredMessage").classList.toggle("is-hidden", ready);
+      document.getElementById("printBtn").disabled = !ready;
+      document.getElementById("previewBtn").disabled = !ready;
+      document.querySelectorAll("#workArea input, #workArea textarea, #workArea select, #workArea button").forEach(el => {
+        if (el.classList.contains("locked")) return;
+        el.disabled = !ready;
+      });
+    }
+
+    function calculate() {
+      syncFromDOM();
+      const total = sections
+        .filter(section => activeSections[section.sezione])
+        .flatMap(section => section.righe)
+        .reduce((sum, row) => {
+          const lineTotal = num(row.quantita || 1) * num(row.prezzo);
+          const lineCell = document.querySelector(`[data-line-total="${row.id}"]`);
+          if (lineCell) lineCell.textContent = euro.format(lineTotal);
+          return sum + lineTotal;
+        }, 0);
+      const showIva = document.getElementById("showIva").value === "yes";
+      const iva = total * num(document.getElementById("ivaRate").value) / 100;
+      totalNet.textContent = euro.format(total);
+      totalIva.textContent = euro.format(showIva ? iva : 0);
+      totalGrand.textContent = euro.format(showIva ? total + iva : total);
+      document.querySelectorAll(".iva-line").forEach(el => {
+        el.style.display = showIva ? "" : "none";
+      });
+      totalNet.closest(".totals").style.display = document.getElementById("pricingMode").value === "total" ? "" : "none";
+    }
+
+    function siteData() {
+      return {
+        siteAddress: document.getElementById("siteAddress").value,
+        siteOrder: document.getElementById("siteOrder").value,
+        siteContact: document.getElementById("siteContact").value,
+        siteType: document.getElementById("siteType").value,
+        siteAccess: document.getElementById("siteAccess").value
+      };
+    }
+
+    function savePreventivo() {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+
+    function addRow(sectionId) {
+      syncFromDOM();
+      const section = sections.find(item => item.sezione === sectionId);
+      if (!section) return;
+      section.righe.push({
+        id: uid(),
+        descrizione: section.addLabel || "",
+        dettaglio: "",
+        opzione: section.addDefaultOption || section.addOptions?.[0] || "€ / mq",
+        opzioni: section.addOptions,
+        quantita: 1,
+        prezzo: "",
+        removable: true
+      });
+      renderSections();
+      savePreventivo();
+    }
+
+    function deleteRow(rowId) {
+      sections.forEach(section => {
+        section.righe = section.righe.filter(row => row.id !== rowId);
+      });
+      renderSections();
+      savePreventivo();
+    }
+
+    async function resetPreventivo() {
+      if (!confirm("Creare un nuovo preventivo Pavinord? I dati correnti verranno eliminati.")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      clearFormFields();
+      await start();
+    }
+
+    function updateCleanMode() {
+      document.body.classList.toggle("hide-actions", document.getElementById("cleanMode").value === "clean");
+    }
+
+    function printPDF() {
+      if (!hasRequiredSiteData()) {
+        document.getElementById("requiredMessage").scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      syncFromDOM();
+      calculate();
+      document.getElementById("cleanMode").value = "clean";
+      updateCleanMode();
+      setTimeout(() => window.print(), 80);
+    }
+
+    function bindDynamicEvents() {
+      document.querySelectorAll("[data-add-row]").forEach(btn => {
+        btn.addEventListener("click", () => addRow(btn.dataset.addRow));
+      });
+      document.querySelectorAll("[data-delete-row]").forEach(btn => {
+        btn.addEventListener("click", () => deleteRow(btn.dataset.deleteRow));
+      });
+      document.querySelectorAll("[data-field]").forEach(input => {
+        input.addEventListener("input", () => { calculate(); savePreventivo(); });
+        input.addEventListener("change", () => { calculate(); savePreventivo(); });
+      });
+      document.querySelectorAll("[data-section-toggle]").forEach(input => {
+        input.addEventListener("change", () => {
+          syncFromDOM();
+          activeSections[input.dataset.sectionToggle] = input.checked;
+          renderSections();
+          savePreventivo();
+        });
+      });
+    }
+
+    async function start() {
+      localStorage.removeItem(STORAGE_KEY);
+      clearFormFields();
+      document.getElementById("quoteDate").value = todayISO();
+      await loadSections();
+      renderSections();
+      updateCleanMode();
+      updateRequiredState();
+    }
+
+    function clearFormFields() {
+      document.getElementById("quoteNumber").value = "PAV-001-2026";
+      document.getElementById("siteAddress").value = "";
+      document.getElementById("siteOrder").value = "";
+      document.getElementById("siteContact").value = "";
+      document.getElementById("siteType").selectedIndex = 0;
+      document.getElementById("siteAccess").selectedIndex = 0;
+      document.getElementById("pricingMode").value = "total";
+      document.getElementById("showIva").value = "no";
+      document.getElementById("ivaRate").value = "22";
+      document.getElementById("cleanMode").value = "edit";
+      document.getElementById("notes").value = "";
+      updateCleanMode();
+    }
+
+    document.getElementById("quoteNumber").addEventListener("input", savePreventivo);
+    document.getElementById("quoteDate").addEventListener("change", savePreventivo);
+    document.getElementById("pricingMode").addEventListener("change", () => { calculate(); savePreventivo(); });
+    document.getElementById("showIva").addEventListener("change", () => { calculate(); savePreventivo(); });
+    document.getElementById("ivaRate").addEventListener("input", () => { calculate(); savePreventivo(); });
+    document.getElementById("cleanMode").addEventListener("change", () => { updateCleanMode(); savePreventivo(); });
+    document.getElementById("notes").addEventListener("input", savePreventivo);
+    document.getElementById("resetBtn").addEventListener("click", resetPreventivo);
+    document.getElementById("previewBtn").addEventListener("click", () => {
+      const clean = document.getElementById("cleanMode");
+      clean.value = clean.value === "clean" ? "edit" : "clean";
+      updateCleanMode();
+      savePreventivo();
+    });
+    document.getElementById("printBtn").addEventListener("click", printPDF);
+    [...requiredFields, "siteType", "siteAccess"].forEach(id => {
+      document.getElementById(id).addEventListener("input", () => { updateRequiredState(); savePreventivo(); });
+      document.getElementById(id).addEventListener("change", () => { updateRequiredState(); savePreventivo(); });
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+    }
+
+    start();
+  </script>
+</body>
+</html>
