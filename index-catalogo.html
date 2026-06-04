@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Preventivo Commerciale Smart - Prandini</title>
-  <meta name="theme-color" content="#b58a1f" />
-  <meta name="description" content="Preventivo commerciale Prandini installabile e utilizzabile offline." />
+  <meta name="theme-color" content="#ad8424" />
+  <meta name="description" content="Preventivo commerciale Prandini compilabile, stampabile e installabile." />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="icons/icon.svg" />
@@ -16,13 +17,15 @@
       --line: #d9dee7;
       --soft: #f6f7f9;
       --paper: #ffffff;
-      --gold: #b58a1f;
-      --red: #b33a31;
-      --orange: #c77b36;
-      --green: #3e7b38;
-      --blue: #1d5e8c;
-      --shadow: 0 18px 50px rgba(25, 32, 44, .10);
-      --radius: 16px;
+      --gold: #ad8424;
+      --red: #a9473f;
+      --orange: #b9743e;
+      --green: #3f7541;
+      --blue: #235f83;
+      --shadow: 0 14px 34px rgba(25, 32, 44, .09);
+      --radius: 14px;
+      --radius-panel: 12px;
+      --radius-control: 9px;
     }
 
     * { box-sizing: border-box; }
@@ -35,7 +38,7 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    button, input, textarea { font: inherit; }
+    button, input, textarea, select { font: inherit; }
 
     .app {
       max-width: 1280px;
@@ -70,20 +73,21 @@
     .toolbar-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
       justify-content: flex-end;
+      gap: 10px;
     }
 
     .btn {
       border: 1px solid var(--line);
+      border-radius: var(--radius-control);
       background: var(--paper);
       color: var(--ink);
       padding: 10px 14px;
-      border-radius: 999px;
       cursor: pointer;
-      font-weight: 800;
       font-size: 13px;
-      box-shadow: 0 2px 10px rgba(25, 32, 44, .04);
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(25, 32, 44, .04);
       transition: .18s ease;
     }
 
@@ -106,6 +110,7 @@
 
     .sheet {
       background: var(--paper);
+      border: 1px solid rgba(217, 222, 231, .75);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 34px;
@@ -127,7 +132,6 @@
       flex-wrap: wrap;
       gap: 10px 12px;
       min-height: 48px;
-      max-width: 100%;
     }
 
     .brand-logo-card {
@@ -138,8 +142,8 @@
       align-items: center;
       justify-content: center;
       padding: 5px 8px;
-      border: 1px solid rgba(181, 138, 31, .18);
-      border-radius: 12px;
+      border: 1px solid rgba(173, 132, 36, .18);
+      border-radius: var(--radius-control);
       background: #fff;
     }
 
@@ -162,8 +166,7 @@
     }
 
     .field label,
-    .option-label,
-    .logo-control-title {
+    .panel-title {
       display: block;
       color: var(--muted);
       font-size: 12px;
@@ -174,10 +177,12 @@
     }
 
     .field input,
-    .field textarea {
+    .field textarea,
+    .cell-input,
+    .cell-select {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: var(--radius-control);
       padding: 10px 12px;
       outline: none;
       background: #fff;
@@ -185,20 +190,17 @@
       font-weight: 650;
     }
 
-    .field textarea {
-      resize: vertical;
-      min-height: 82px;
-    }
-
     .field input:focus,
-    .field textarea:focus {
+    .field textarea:focus,
+    .cell-input:focus,
+    .cell-select:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(181, 138, 31, .12);
+      box-shadow: 0 0 0 4px rgba(173, 132, 36, .12);
     }
 
     .quote-meta {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 170px;
       gap: 12px;
     }
 
@@ -209,7 +211,7 @@
       margin: 20px 0 14px;
       padding: 16px;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: var(--radius-panel);
       background: var(--soft);
     }
 
@@ -223,7 +225,7 @@
       margin-bottom: 24px;
     }
 
-    .logo-control-title {
+    .panel-title {
       color: var(--gold);
       margin: 0;
     }
@@ -252,21 +254,21 @@
 
     .sections-panel {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 10px;
       margin-bottom: 22px;
     }
 
     .section-toggle {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
       min-height: 66px;
-      cursor: pointer;
       display: flex;
       align-items: flex-start;
       gap: 9px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-panel);
+      background: #fff;
+      padding: 12px;
+      cursor: pointer;
       box-shadow: 0 2px 10px rgba(25, 32, 44, .03);
     }
 
@@ -285,9 +287,9 @@
 
     .section-toggle span {
       display: block;
-      margin-top: 5px;
       width: 46px;
       height: 5px;
+      margin-top: 6px;
       border-radius: 999px;
       background: var(--gold);
     }
@@ -295,7 +297,7 @@
     .section {
       margin: 18px 0 26px;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: var(--radius-panel);
       overflow: hidden;
       background: #fff;
     }
@@ -325,7 +327,7 @@
       border: 1px solid rgba(255,255,255,.45);
       background: rgba(255,255,255,.14);
       color: #fff;
-      border-radius: 999px;
+      border-radius: var(--radius-control);
       padding: 6px 9px;
       cursor: pointer;
       font-size: 12px;
@@ -345,7 +347,7 @@
       text-transform: uppercase;
       letter-spacing: .08em;
       font-size: 12px;
-      padding: 10px 10px;
+      padding: 10px;
       border-right: 1px solid rgba(255,255,255,.08);
       white-space: nowrap;
     }
@@ -360,47 +362,26 @@
     td:last-child,
     th:last-child { border-right: 0; }
 
-    .cell-input {
-      width: 100%;
+    .cell-input,
+    .cell-select {
       min-height: 42px;
       border: 0;
-      padding: 10px 10px;
-      outline: none;
+      border-radius: 0;
       background: transparent;
-      color: var(--ink);
+      padding: 10px;
       font-weight: 600;
     }
 
-    .catalog-picker {
-      display: grid;
-      gap: 6px;
-      padding: 6px;
-    }
-
-    .catalog-select,
-    .um-select,
-    .iva-select {
-      width: 100%;
-      min-height: 36px;
+    .cell-select {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius-control);
       background: #f8f9fb;
-      color: var(--ink);
+      margin: 6px;
+      width: calc(100% - 12px);
+      min-height: 36px;
       padding: 7px 9px;
-      outline: none;
       font-size: 12px;
       font-weight: 800;
-    }
-
-    .catalog-picker .cell-input {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    textarea.cell-input {
-      resize: vertical;
-      display: block;
     }
 
     .cell-input.number,
@@ -412,12 +393,12 @@
     .money-cell {
       padding: 10px 12px;
       font-weight: 850;
-      color: var(--ink);
       white-space: nowrap;
     }
 
     .delete-row {
       width: 100%;
+      min-height: 42px;
       border: 0;
       background: transparent;
       color: #9aa1ad;
@@ -451,6 +432,11 @@
       margin-top: 24px;
     }
 
+    .notes-section textarea {
+      min-height: 98px;
+      resize: vertical;
+    }
+
     .totals {
       border-top: 2px solid var(--gold);
       padding-top: 14px;
@@ -482,27 +468,6 @@
       margin-top: 5px;
     }
 
-    .conditions {
-      margin-top: 26px;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-    }
-
-    .conditions h3 {
-      margin: 0 0 10px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 13px;
-      color: var(--gold);
-    }
-
-    .condition-item {
-      margin: 8px 0;
-      color: #4d5562;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
     .print-help {
       margin-top: 16px;
       color: var(--muted);
@@ -523,96 +488,34 @@
 
     @media screen and (max-width: 980px) {
       .app { padding: 12px; }
-
-      .toolbar {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .toolbar-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-        padding: 11px 10px;
-      }
-
+      .toolbar, .header { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      .toolbar-actions { display: grid; grid-template-columns: 1fr 1fr; }
+      .btn { width: 100%; text-align: center; }
       .sheet { padding: 16px; }
-
-      .header {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
       .quote-meta,
       .controls,
       .logo-controls,
       .sections-panel,
-      .notes-section {
-        grid-template-columns: 1fr;
-        min-width: 0;
-      }
-
-      .brand-dynamic {
-        justify-content: center;
-        min-height: auto;
-      }
-
-      .brand-logo-card {
-        width: calc(50% - 7px);
-        max-width: none;
-      }
-
-      .brand-logo-card img {
-        max-width: 100%;
-      }
-
+      .notes-section { grid-template-columns: 1fr; }
+      .brand-dynamic { justify-content: center; }
+      .brand-logo-card { width: calc(50% - 7px); max-width: none; }
+      .brand-logo-card img { max-width: 100%; }
       .section { overflow: visible; }
-
-      .section-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .section-actions {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .small-btn {
-        width: 100%;
-        padding: 9px 10px;
-      }
-
-      table, thead, tbody, tr, th, td {
-        display: block;
-        width: 100% !important;
-      }
-
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .section-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+      .small-btn { width: 100%; padding: 9px 10px; }
+      table, thead, tbody, tr, th, td { display: block; width: 100% !important; }
       thead { display: none; }
-
-      tr[data-row] {
-        border-bottom: 1px solid var(--line);
-        padding: 10px 10px 12px;
-        background: #fff;
-      }
-
+      tr[data-row] { border-bottom: 1px solid var(--line); padding: 10px; background: #fff; }
       tr[data-row] td {
         display: grid;
         grid-template-columns: 118px 1fr;
         align-items: center;
         gap: 10px;
         border: 0;
-        padding: 4px 0;
+        padding: 5px 0;
         background: transparent;
       }
-
       tr[data-row] td::before {
         color: var(--muted);
         text-transform: uppercase;
@@ -620,7 +523,6 @@
         font-size: 10px;
         font-weight: 900;
       }
-
       tr[data-row] td:nth-child(1)::before { content: "Descrizione"; }
       tr[data-row] td:nth-child(2)::before { content: "U.M."; }
       tr[data-row] td:nth-child(3)::before { content: "Q.tà"; }
@@ -629,50 +531,27 @@
       tr[data-row] td:nth-child(6)::before { content: "Cod. IVA"; }
       tr[data-row] td:nth-child(7)::before { content: "Netto"; }
       tr[data-row] td:nth-child(8)::before { content: ""; }
-
       .cell-input,
-      textarea.cell-input,
+      .cell-select,
       .money-cell {
         min-height: 38px;
         border: 1px solid var(--line);
-        border-radius: 9px;
+        border-radius: var(--radius-control);
         background: #fff;
+        margin: 0;
+        width: 100%;
       }
-
-      .money-cell {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-      }
-
-      .delete-row {
-        border: 1px solid var(--line);
-        border-radius: 9px;
-        background: #fafafa;
-      }
-
-      .subtotal-row {
-        display: grid !important;
-        grid-template-columns: 1fr;
-        padding: 10px;
-        background: #fafafa;
-      }
-
-      .subtotal-row td {
-        border: 0;
-        padding: 4px 0;
-      }
-
+      .money-cell { display: flex; justify-content: flex-end; align-items: center; }
+      .delete-row { border: 1px solid var(--line); border-radius: var(--radius-control); background: #fafafa; }
+      .subtotal-row { display: grid !important; grid-template-columns: 1fr; padding: 10px; background: #fafafa; }
+      .subtotal-row td { border: 0; padding: 4px 0; }
       .subtotal-row td:first-child { font-size: 11px; }
       .subtotal-row .subtotal-value { text-align: right; font-size: 16px; }
       .totals { width: 100%; }
       .total-line.grand { font-size: 20px; }
     }
 
-    @page {
-      size: A4;
-      margin: 10mm;
-    }
+    @page { size: A4; margin: 10mm; }
 
     @media print {
       html, body {
@@ -683,53 +562,32 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-
-      .app {
-        max-width: none !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-
-      .toolbar,
-      .controls,
-      .logo-controls,
-      .sections-panel,
-      .section-actions,
-      .delete-row,
-      .print-help {
-        display: none !important;
-      }
-
+      .app { max-width: none !important; width: 100% !important; padding: 0 !important; margin: 0 !important; }
+      .toolbar, .controls, .logo-controls, .sections-panel, .section-actions, .delete-row, .print-help { display: none !important; }
       .sheet {
         width: 190mm !important;
         max-width: 190mm !important;
         margin: 0 auto !important;
         padding: 0 !important;
         box-shadow: none !important;
+        border: 0 !important;
         border-radius: 0 !important;
         overflow: visible !important;
       }
-
       .header {
-        display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 0 !important;
         padding-bottom: 8px !important;
         margin-bottom: 8px !important;
         border-bottom: 2px solid var(--gold) !important;
       }
-
       .brand-dynamic {
-        display: flex !important;
         flex-wrap: nowrap !important;
-        align-items: center !important;
         justify-content: flex-start !important;
         gap: 6mm !important;
         min-height: 20mm !important;
         margin-bottom: 4mm !important;
       }
-
       .brand-logo-card {
         height: 18mm !important;
         min-width: 0 !important;
@@ -739,30 +597,10 @@
         border-radius: 0 !important;
         background: transparent !important;
       }
-
-      .brand-logo-card img {
-        max-height: 15mm !important;
-        max-width: 38mm !important;
-      }
-
-      .brand-logo-card.group-logo img {
-        max-height: 13mm !important;
-        max-width: 32mm !important;
-      }
-
-      .quote-meta {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 16mm !important;
-        min-width: 0 !important;
-        width: 100% !important;
-      }
-
-      .field label {
-        font-size: 8.5px !important;
-        margin-bottom: 3px !important;
-      }
-
+      .brand-logo-card img { max-height: 15mm !important; max-width: 38mm !important; }
+      .brand-logo-card.group-logo img { max-height: 13mm !important; max-width: 32mm !important; }
+      .quote-meta { grid-template-columns: 1fr 1fr 34mm !important; gap: 8mm !important; width: 100% !important; }
+      .field label { font-size: 8.5px !important; margin-bottom: 3px !important; }
       .field input,
       .field textarea {
         border: 0 !important;
@@ -771,7 +609,6 @@
         box-shadow: none !important;
         background: transparent !important;
       }
-
       .section {
         width: 100% !important;
         margin: 8px 0 11px !important;
@@ -780,30 +617,11 @@
         break-inside: avoid;
         page-break-inside: avoid;
       }
-
-      .section-head {
-        padding: 5px 8px !important;
-      }
-
-      .section-title {
-        font-size: 9px !important;
-      }
-
-      table {
-        width: 100% !important;
-        min-width: 0 !important;
-        table-layout: fixed !important;
-        border-collapse: collapse !important;
-      }
-
-      th {
-        padding: 4px 5px !important;
-        font-size: 8px !important;
-        line-height: 1.1 !important;
-      }
-
+      .section-head { padding: 5px 8px !important; }
+      .section-title { font-size: 9px !important; }
+      table { width: 100% !important; min-width: 0 !important; table-layout: fixed !important; border-collapse: collapse !important; }
+      th { padding: 4px 5px !important; font-size: 8px !important; line-height: 1.1 !important; }
       td { padding: 0 !important; }
-
       th:nth-child(1), td:nth-child(1) { width: 38% !important; }
       th:nth-child(2), td:nth-child(2) { width: 8% !important; }
       th:nth-child(3), td:nth-child(3) { width: 9% !important; }
@@ -812,89 +630,30 @@
       th:nth-child(6), td:nth-child(6) { width: 9% !important; }
       th:nth-child(7), td:nth-child(7) { width: 11% !important; }
       th:nth-child(8), td:nth-child(8) { width: 0 !important; display: none !important; }
-
       .cell-input,
-      textarea.cell-input,
+      .cell-select,
       .money-cell {
         padding: 3px 5px !important;
         min-height: 18px !important;
-        font-size: 9.5px !important;
-        line-height: 1.2 !important;
-      }
-
-      .catalog-select,
-      .um-select {
-        display: none !important;
-      }
-
-      .iva-select {
-        border: 0 !important;
-        border-radius: 0 !important;
-        background: transparent !important;
-        appearance: none !important;
-        padding: 3px 5px !important;
-        font-size: 9.5px !important;
-        font-weight: 850 !important;
-      }
-
-      .catalog-picker {
-        display: block !important;
-        padding: 0 !important;
-      }
-
-      .catalog-picker .cell-input {
         border: 0 !important;
         border-radius: 0 !important;
         background: transparent !important;
         box-shadow: none !important;
+        font-size: 9.5px !important;
+        line-height: 1.2 !important;
       }
-
-      textarea.cell-input {
-        resize: none !important;
-        overflow: hidden !important;
+      .cell-select {
+        appearance: none !important;
+        font-weight: 850 !important;
       }
-
-      .subtotal-row td {
-        padding: 4px 6px !important;
-        font-size: 8.5px !important;
-      }
-
+      .subtotal-row td { padding: 4px 6px !important; font-size: 8.5px !important; }
       .subtotal-row .subtotal-value { font-size: 9px !important; }
-
-      .notes-section {
-        display: grid !important;
-        grid-template-columns: 1fr 80mm !important;
-        gap: 10mm !important;
-        margin-top: 12px !important;
-      }
-
-      .totals {
-        width: 80mm !important;
-        padding-top: 8px !important;
-      }
-
+      .notes-section { grid-template-columns: 1fr 80mm !important; gap: 10mm !important; margin-top: 12px !important; }
+      .totals { width: 80mm !important; padding-top: 8px !important; }
       .total-line { padding: 4px 0 !important; }
       .total-line span:first-child { font-size: 8.5px !important; }
       .total-line.grand { font-size: 15px !important; padding-top: 7px !important; }
-
-      .conditions {
-        margin-top: 12px !important;
-        padding-top: 10px !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .conditions h3 {
-        font-size: 10px !important;
-        margin-bottom: 6px !important;
-      }
-
-      .condition-item,
-      .field textarea {
-        font-size: 9px !important;
-        line-height: 1.3 !important;
-      }
-
+      .field textarea { font-size: 9px !important; line-height: 1.3 !important; }
       body.hide-discount.hide-iva th:nth-child(1),
       body.hide-discount.hide-iva td:nth-child(1) { width: 48% !important; }
       body.hide-discount.hide-iva th:nth-child(2),
@@ -905,32 +664,6 @@
       body.hide-discount.hide-iva td:nth-child(4) { width: 15% !important; }
       body.hide-discount.hide-iva th:nth-child(7),
       body.hide-discount.hide-iva td:nth-child(7) { width: 18% !important; }
-
-      body.hide-discount:not(.hide-iva) th:nth-child(1),
-      body.hide-discount:not(.hide-iva) td:nth-child(1) { width: 43% !important; }
-      body.hide-discount:not(.hide-iva) th:nth-child(2),
-      body.hide-discount:not(.hide-iva) td:nth-child(2) { width: 8% !important; }
-      body.hide-discount:not(.hide-iva) th:nth-child(3),
-      body.hide-discount:not(.hide-iva) td:nth-child(3) { width: 9% !important; }
-      body.hide-discount:not(.hide-iva) th:nth-child(4),
-      body.hide-discount:not(.hide-iva) td:nth-child(4) { width: 14% !important; }
-      body.hide-discount:not(.hide-iva) th:nth-child(6),
-      body.hide-discount:not(.hide-iva) td:nth-child(6) { width: 10% !important; }
-      body.hide-discount:not(.hide-iva) th:nth-child(7),
-      body.hide-discount:not(.hide-iva) td:nth-child(7) { width: 16% !important; }
-
-      body:not(.hide-discount).hide-iva th:nth-child(1),
-      body:not(.hide-discount).hide-iva td:nth-child(1) { width: 43% !important; }
-      body:not(.hide-discount).hide-iva th:nth-child(2),
-      body:not(.hide-discount).hide-iva td:nth-child(2) { width: 8% !important; }
-      body:not(.hide-discount).hide-iva th:nth-child(3),
-      body:not(.hide-discount).hide-iva td:nth-child(3) { width: 9% !important; }
-      body:not(.hide-discount).hide-iva th:nth-child(4),
-      body:not(.hide-discount).hide-iva td:nth-child(4) { width: 14% !important; }
-      body:not(.hide-discount).hide-iva th:nth-child(5),
-      body:not(.hide-discount).hide-iva td:nth-child(5) { width: 11% !important; }
-      body:not(.hide-discount).hide-iva th:nth-child(7),
-      body:not(.hide-discount).hide-iva td:nth-child(7) { width: 15% !important; }
     }
   </style>
 </head>
@@ -938,14 +671,14 @@
   <div class="app">
     <div class="toolbar">
       <div class="toolbar-title">
-        <span>Bau Group</span>
+        <span>Prandini</span>
         <strong>Preventivo commerciale smart</strong>
       </div>
       <div class="toolbar-actions">
-        <button class="btn" id="resetBtn">Nuovo preventivo</button>
-        <button class="btn" id="addAllBtn">Aggiungi una riga per sezione</button>
-        <button class="btn primary" id="previewBtn">Vista PDF pulita</button>
-        <button class="btn gold" id="printBtn">Esporta PDF per Delera</button>
+        <button class="btn" id="resetBtn" type="button">Nuovo preventivo</button>
+        <button class="btn" id="addAllBtn" type="button">Aggiungi una riga per sezione</button>
+        <button class="btn primary" id="previewBtn" type="button">Vista PDF pulita</button>
+        <button class="btn gold" id="printBtn" type="button">Esporta PDF per Delera</button>
       </div>
     </div>
 
@@ -954,8 +687,12 @@
         <div class="brand-dynamic" id="brandLogos" aria-label="Loghi selezionati"></div>
         <div class="quote-meta">
           <div class="field">
-            <label for="quoteNumber">Preventivo N°</label>
-            <input id="quoteNumber" value="001-2026" />
+            <label for="clientName">Cliente</label>
+            <input id="clientName" placeholder="Nome cliente" />
+          </div>
+          <div class="field">
+            <label for="siteName">Cantiere</label>
+            <input id="siteName" placeholder="Indirizzo o riferimento cantiere" />
           </div>
           <div class="field">
             <label for="quoteDate">Data</label>
@@ -965,14 +702,14 @@
       </section>
 
       <section class="logo-controls" aria-label="Selezione loghi">
-        <div class="logo-control-title">Loghi intestazione</div>
+        <div class="panel-title">Loghi intestazione</div>
         <label class="check"><input type="checkbox" class="logo-check" value="bau" checked disabled /> Bau Group</label>
         <label class="check"><input type="checkbox" class="logo-check" value="progetto" checked /> Progetto Colore</label>
         <label class="check"><input type="checkbox" class="logo-check" value="prandini" checked /> Prandini Ceramiche</label>
         <label class="check"><input type="checkbox" class="logo-check" value="pavinord" /> Pavinord</label>
       </section>
 
-      <section class="controls" aria-label="Opzioni di visualizzazione">
+      <section class="controls" aria-label="Opzioni preventivo">
         <label class="check"><input type="checkbox" id="showUnitPrice" checked /> Mostra prezzi unitari</label>
         <label class="check"><input type="checkbox" id="showDiscount" checked /> Mostra sconto</label>
         <label class="check"><input type="checkbox" id="showSubtotals" checked /> Mostra subtotali</label>
@@ -981,7 +718,7 @@
         <label class="check"><input type="checkbox" id="cleanMode" /> Nascondi pulsanti in pagina</label>
       </section>
 
-      <section class="sections-panel" id="sectionToggles"></section>
+      <section class="sections-panel" id="sectionToggles" aria-label="Sezioni preventivo"></section>
       <section id="sectionsContainer"></section>
 
       <section class="notes-section">
@@ -989,7 +726,6 @@
           <label for="freeNotes">Note commerciali</label>
           <textarea id="freeNotes" placeholder="Condizioni commerciali, tempi di consegna, validità offerta..."></textarea>
         </div>
-
         <div class="totals" id="totalsBox">
           <div class="total-line">
             <span>Totale imponibile</span>
@@ -1006,11 +742,7 @@
         </div>
       </section>
 
-      <section class="conditions" id="conditionsBox">
-        <h3>Termini e condizioni</h3>
-        <div id="conditionsList"></div>
-      </section>
-      <p class="print-help">Per allegarlo in Delera: Esporta PDF → salva → inserisci il PDF nel contratto.</p>
+      <p class="print-help">Per allegarlo in Delera: Esporta PDF, salva e inserisci il PDF nel contratto.</p>
     </main>
   </div>
 
@@ -1018,83 +750,27 @@
     const LOGOS = {
       bau: {
         label: "Bau Group",
-        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Bau--300x153.png",
+        src: "logo_bau.png",
         className: "group-logo"
       },
       progetto: {
         label: "Progetto Colore",
-        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Progetto-Colore@3x.png",
+        src: "logo_progetto.png",
         className: ""
       },
       prandini: {
         label: "Prandini Ceramiche",
-        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Prandini-Ceramiche@3x.png",
+        src: "logo_prandini.png",
         className: ""
       },
       pavinord: {
         label: "Pavinord",
-        src: "https://baugroup.it/wp-content/uploads/2024/12/Logo-Pavinord@3x.png",
+        src: "logo_pavinord.png",
         className: ""
       }
     };
 
     const logoOrder = ["bau", "progetto", "prandini", "pavinord"];
-
-    const categories = [
-      {
-        id: "pavimenti",
-        label: "Pavimenti e rivestimenti",
-        color: "#b58a1f",
-        defaultRows: [
-          ["Gres effetto legno 20x120", "mq", 50, 45, 10],
-          ["Battiscopa coordinato", "ml", 30, 12, 5]
-        ],
-        condition: "Per forniture di pavimenti e rivestimenti: eventuali variazioni cromatiche tra campioni e materiale consegnato sono da considerarsi fisiologiche. Le quantità indicate possono includere sfridi standard."
-      },
-      {
-        id: "posa",
-        label: "Posa pavimenti e rivestimenti",
-        color: "#b33a31",
-        defaultRows: [
-          ["Posa in opera specializzata formato 20x120", "mq", 50, 28, 0],
-          ["Preparazione fondo con primer", "mq", 50, 10, 0]
-        ],
-        condition: "Per servizi di posa in opera: il prezzo si intende valido su superfici idonee, pulite e pronte alla posa. Eventuali livellamenti, preparazioni supplementari o interventi non previsti saranno conteggiati a parte."
-      },
-      {
-        id: "materiale",
-        label: "Materiale di posa",
-        color: "#c77b36",
-        defaultRows: [
-          ["Primer fissante", "kg", 5, 10, 0],
-          ["Stucco 123 bianco antico", "kg", 5, 4, 0],
-          ["H40 colla nolimits", "kg", 25, 0.6, 0]
-        ],
-        condition: "I materiali di posa sono stimati sulla base delle quantità indicate. Eventuali integrazioni necessarie durante l'esecuzione verranno concordate e conteggiate separatamente."
-      },
-      {
-        id: "sanitari",
-        label: "Sanitari e arredobagno",
-        color: "#3e7b38",
-        defaultRows: [
-          ["Coppia sanitari filomuro", "nr", 1, 650, 5],
-          ["Mobile bagno con specchiera", "nr", 1, 1500, 5]
-        ],
-        condition: "Per sanitari e arredobagno: disponibilità, finiture e tempi di consegna sono soggetti a conferma del fornitore al momento dell'ordine."
-      },
-      {
-        id: "interventi",
-        label: "Interventi per ristrutturazione bagno",
-        color: "#1d5e8c",
-        defaultRows: [
-          ["Demolizione e smaltimento pavimenti, rivestimenti e sanitari", "ac", 1, 550, 0],
-          ["Rifacimento massetto", "ac", 1, 850, 0],
-          ["Nuova impiantistica idraulica completa", "nr", 1, 1200, 0]
-        ],
-        condition: "Per interventi di ristrutturazione: eventuali vizi occulti, difformità, tubature deteriorate o lavorazioni non visibili prima dell'apertura del cantiere saranno oggetto di valutazione separata."
-      }
-    ];
-
     const IVA_CODES = [
       { value: "22", label: "22%" },
       { value: "10", label: "10%" },
@@ -1102,15 +778,62 @@
       { value: "0", label: "Esente" }
     ];
 
+    const categories = [
+      {
+        id: "pavimenti",
+        label: "Pavimenti e rivestimenti",
+        color: "#ad8424",
+        defaultRows: [
+          ["Gres effetto legno 20x120", "mq", 50, 45, 10],
+          ["Battiscopa coordinato", "ml", 30, 12, 5]
+        ]
+      },
+      {
+        id: "posa",
+        label: "Posa pavimenti e rivestimenti",
+        color: "#a9473f",
+        defaultRows: [
+          ["Posa in opera specializzata formato 20x120", "mq", 50, 28, 0],
+          ["Preparazione fondo con primer", "mq", 50, 10, 0]
+        ]
+      },
+      {
+        id: "materiale",
+        label: "Materiale di posa",
+        color: "#b9743e",
+        defaultRows: [
+          ["Primer fissante", "kg", 5, 10, 0],
+          ["Stucco 123 bianco antico", "kg", 5, 4, 0],
+          ["H40 colla nolimits", "kg", 25, 0.6, 0]
+        ]
+      },
+      {
+        id: "sanitari",
+        label: "Sanitari e arredobagno",
+        color: "#3f7541",
+        defaultRows: [
+          ["Coppia sanitari filomuro", "nr", 1, 650, 5],
+          ["Mobile bagno con specchiera", "nr", 1, 1500, 5]
+        ]
+      },
+      {
+        id: "interventi",
+        label: "Interventi per ristrutturazione bagno",
+        color: "#235f83",
+        defaultRows: [
+          ["Demolizione e smaltimento pavimenti, rivestimenti e sanitari", "ac", 1, 550, 0],
+          ["Rifacimento massetto", "ac", 1, 850, 0],
+          ["Nuova impiantistica idraulica completa", "nr", 1, 1200, 0]
+        ]
+      }
+    ];
+
     const state = { rows: {}, active: {} };
-    const STORAGE_KEY = "preventivo-prandini-smart";
     const euro = new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" });
 
     const brandLogos = document.getElementById("brandLogos");
     const sectionToggles = document.getElementById("sectionToggles");
     const sectionsContainer = document.getElementById("sectionsContainer");
-    const conditionsList = document.getElementById("conditionsList");
-
     function todayISO() {
       const d = new Date();
       return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -1120,77 +843,38 @@
       return Math.random().toString(36).slice(2) + Date.now().toString(36);
     }
 
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;" }[char]));
+    }
+
+    function num(value) {
+      const normalized = String(value || "0").replace(",", ".");
+      const parsed = Number.parseFloat(normalized);
+      return Number.isFinite(parsed) ? parsed : 0;
+    }
+
     function initState() {
       categories.forEach((cat, index) => {
         state.active[cat.id] = index < 2;
-        state.rows[cat.id] = cat.defaultRows.map(([description, um, qty, price, discount]) => ({ id: uid(), description, um, qty, price, discount, ivaCode: "22" }));
+        state.rows[cat.id] = cat.defaultRows.map(([description, um, qty, price, discount]) => ({
+          id: uid(),
+          description,
+          um,
+          qty,
+          price,
+          discount,
+          ivaCode: "22"
+        }));
       });
+      document.getElementById("clientName").value = "";
+      document.getElementById("siteName").value = "";
       document.getElementById("quoteDate").value = todayISO();
-    }
-
-    function savePreventivo() {
-      syncFromDOM();
-      const data = {
-        quoteNumber: document.getElementById("quoteNumber").value,
-        quoteDate: document.getElementById("quoteDate").value,
-        freeNotes: document.getElementById("freeNotes").value,
-        logos: Array.from(document.querySelectorAll(".logo-check:checked")).map(input => input.value),
-        options: {
-          showUnitPrice: document.getElementById("showUnitPrice").checked,
-          showDiscount: document.getElementById("showDiscount").checked,
-          showSubtotals: document.getElementById("showSubtotals").checked,
-          showTotals: document.getElementById("showTotals").checked,
-          showIva: document.getElementById("showIva").checked,
-          cleanMode: document.getElementById("cleanMode").checked
-        },
-        active: state.active,
-        rows: state.rows
-      };
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
-
-    function loadPreventivo() {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) return;
-
-      try {
-        const data = JSON.parse(saved);
-        if (data.active && data.rows) {
-          categories.forEach(cat => {
-            state.active[cat.id] = Boolean(data.active[cat.id]);
-            state.rows[cat.id] = Array.isArray(data.rows[cat.id]) ? data.rows[cat.id] : state.rows[cat.id];
-          });
-        }
-
-        document.getElementById("quoteNumber").value = data.quoteNumber || "001-2026";
-        document.getElementById("quoteDate").value = data.quoteDate || todayISO();
-        document.getElementById("freeNotes").value = data.freeNotes || "";
-
-        if (Array.isArray(data.logos)) {
-          document.querySelectorAll(".logo-check").forEach(input => {
-            input.checked = input.value === "bau" || data.logos.includes(input.value);
-          });
-        }
-
-        if (data.options) {
-          Object.entries(data.options).forEach(([id, value]) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            if (el.type === "checkbox") el.checked = Boolean(value);
-            else el.value = value;
-          });
-        }
-      } catch {
-        localStorage.removeItem(STORAGE_KEY);
-      }
     }
 
     function renderLogos() {
       const checked = Array.from(document.querySelectorAll(".logo-check:checked")).map(input => input.value);
       const selected = logoOrder.filter(key => checked.includes(key) || key === "bau");
       brandLogos.innerHTML = "";
-
       selected.forEach(key => {
         const logo = LOGOS[key];
         if (!logo) return;
@@ -1206,9 +890,16 @@
       label.className = "section-toggle";
       label.innerHTML = `
         <input type="checkbox" ${state.active[cat.id] ? "checked" : ""} data-section-toggle="${cat.id}" />
-        <div><strong>${cat.label}</strong><span style="background:${cat.color}"></span></div>
+        <div><strong>${escapeHTML(cat.label)}</strong><span style="background:${cat.color}"></span></div>
       `;
       return label;
+    }
+
+    function createIvaOptions(selectedCode = "22") {
+      return IVA_CODES.map(code => {
+        const selected = String(selectedCode || "22") === code.value ? " selected" : "";
+        return `<option value="${escapeHTML(code.value)}"${selected}>${escapeHTML(code.label)}</option>`;
+      }).join("");
     }
 
     function createSection(cat) {
@@ -1218,7 +909,7 @@
       section.dataset.section = cat.id;
       section.innerHTML = `
         <div class="section-head" style="background:${cat.color}">
-          <div class="section-title">${cat.label}</div>
+          <div class="section-title">${escapeHTML(cat.label)}</div>
           <div class="section-actions">
             <button type="button" class="small-btn" data-add-row="${cat.id}">+ Riga</button>
             <button type="button" class="small-btn" data-add-five="${cat.id}">+5 righe</button>
@@ -1240,7 +931,7 @@
           <tbody>
             ${state.rows[cat.id].map(row => createRowHTML(cat.id, row)).join("")}
             <tr class="subtotal-row">
-              <td colspan="6">Subtotale ${cat.label}</td>
+              <td colspan="6">Subtotale ${escapeHTML(cat.label)}</td>
               <td class="subtotal-value" data-subtotal="${cat.id}">€ 0,00</td>
               <td class="col-actions"></td>
             </tr>
@@ -1258,38 +949,18 @@
           <td><input class="cell-input number" type="number" min="0" step="0.01" data-field="qty" value="${num(row.qty)}" /></td>
           <td class="col-price"><input class="cell-input number" type="number" step="0.01" data-field="price" value="${num(row.price)}" /></td>
           <td class="col-discount"><input class="cell-input number" type="number" min="0" max="100" step="0.01" data-field="discount" value="${num(row.discount)}" /></td>
-          <td class="col-iva"><select class="iva-select" data-field="ivaCode">${createIvaOptions(row.ivaCode)}</select></td>
+          <td class="col-iva"><select class="cell-select" data-field="ivaCode">${createIvaOptions(row.ivaCode)}</select></td>
           <td class="money-cell" data-net="${row.id}">€ 0,00</td>
           <td class="col-actions"><button type="button" class="delete-row" data-delete-row="${row.id}" title="Elimina riga">×</button></td>
         </tr>
       `;
     }
 
-    function createIvaOptions(selectedCode = "22") {
-      return IVA_CODES.map(code => {
-        const selected = code.value === String(selectedCode || "22") ? " selected" : "";
-        return `<option value="${escapeHTML(code.value)}"${selected}>${escapeHTML(code.label)}</option>`;
-      }).join("");
-    }
-
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;" }[char]));
-    }
-
-    function num(value) {
-      const n = Number(value || 0);
-      return Number.isFinite(n) ? n : 0;
-    }
-
-    function calcRow(row) {
-      return num(row.qty) * num(row.price) * (1 - num(row.discount) / 100);
-    }
-
     function syncFromDOM() {
       document.querySelectorAll("tr[data-row]").forEach(tr => {
         const catId = tr.dataset.cat;
         const rowId = tr.dataset.row;
-        const row = state.rows[catId]?.find(r => r.id === rowId);
+        const row = state.rows[catId]?.find(item => item.id === rowId);
         if (!row) return;
         tr.querySelectorAll("[data-field]").forEach(input => {
           const field = input.dataset.field;
@@ -1297,6 +968,55 @@
         });
         if (!row.ivaCode) row.ivaCode = "22";
       });
+    }
+
+    function calcRow(row) {
+      return num(row.qty) * num(row.price) * (1 - num(row.discount) / 100);
+    }
+
+    function calculate() {
+      let totalNet = 0;
+      let totalIva = 0;
+      categories.forEach(cat => {
+        if (!state.active[cat.id]) return;
+        let subtotal = 0;
+        state.rows[cat.id].forEach(row => {
+          const net = calcRow(row);
+          subtotal += net;
+          totalIva += net * num(row.ivaCode || "22") / 100;
+          const netCell = document.querySelector(`[data-net="${row.id}"]`);
+          if (netCell) netCell.textContent = euro.format(net);
+        });
+        totalNet += subtotal;
+        const subtotalCell = document.querySelector(`[data-subtotal="${cat.id}"]`);
+        if (subtotalCell) subtotalCell.textContent = euro.format(subtotal);
+      });
+
+      const showIva = document.getElementById("showIva").checked;
+      document.getElementById("totalNet").textContent = euro.format(totalNet);
+      document.getElementById("totalIva").textContent = euro.format(showIva ? totalIva : 0);
+      document.getElementById("totalGrand").textContent = euro.format(showIva ? totalNet + totalIva : totalNet);
+    }
+
+    function updateSubtotalColspans() {
+      let columnsBeforeNet = 3;
+      if (document.getElementById("showUnitPrice").checked) columnsBeforeNet += 1;
+      if (document.getElementById("showDiscount").checked) columnsBeforeNet += 1;
+      if (document.getElementById("showIva").checked) columnsBeforeNet += 1;
+      document.querySelectorAll(".subtotal-row td:first-child").forEach(cell => {
+        cell.colSpan = columnsBeforeNet;
+      });
+    }
+
+    function updateDisplayOptions() {
+      const body = document.body;
+      body.classList.toggle("hide-unit-price", !document.getElementById("showUnitPrice").checked);
+      body.classList.toggle("hide-discount", !document.getElementById("showDiscount").checked);
+      body.classList.toggle("hide-subtotals", !document.getElementById("showSubtotals").checked);
+      body.classList.toggle("hide-totals", !document.getElementById("showTotals").checked);
+      body.classList.toggle("hide-iva", !document.getElementById("showIva").checked);
+      body.classList.toggle("hide-actions", document.getElementById("cleanMode").checked);
+      updateSubtotalColspans();
     }
 
     function render() {
@@ -1313,112 +1033,10 @@
       calculate();
     }
 
-    function bindDynamicEvents() {
-      document.querySelectorAll("[data-section-toggle]").forEach(input => {
-        input.addEventListener("change", e => {
-          syncFromDOM();
-          state.active[e.target.dataset.sectionToggle] = e.target.checked;
-          render();
-          savePreventivo();
-        });
-      });
-
-      document.querySelectorAll("[data-add-row]").forEach(btn => btn.addEventListener("click", e => addRow(e.target.dataset.addRow)));
-
-      document.querySelectorAll("[data-add-five]").forEach(btn => {
-        btn.addEventListener("click", e => {
-          for (let i = 0; i < 5; i++) addRow(e.target.dataset.addFive, false);
-          render();
-          savePreventivo();
-        });
-      });
-
-      document.querySelectorAll("[data-delete-row]").forEach(btn => {
-        btn.addEventListener("click", e => {
-          const rowId = e.target.dataset.deleteRow;
-          const catId = e.target.closest("tr").dataset.cat;
-          state.rows[catId] = state.rows[catId].filter(r => r.id !== rowId);
-          render();
-          savePreventivo();
-        });
-      });
-
-      document.querySelectorAll("[data-field]").forEach(input => {
-        input.addEventListener("input", () => {
-          syncFromDOM();
-          calculate();
-          savePreventivo();
-        });
-        input.addEventListener("change", () => {
-          syncFromDOM();
-          calculate();
-          savePreventivo();
-        });
-      });
-    }
-
     function addRow(catId, shouldRender = true) {
       syncFromDOM();
       state.rows[catId].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0, ivaCode: "22" });
       if (shouldRender) render();
-      savePreventivo();
-    }
-
-    function calculate() {
-      let totalNet = 0;
-      let totalIva = 0;
-      categories.forEach(cat => {
-        if (!state.active[cat.id]) return;
-        let subtotal = 0;
-        state.rows[cat.id].forEach(row => {
-          if (!row.ivaCode) row.ivaCode = "22";
-          const net = calcRow(row);
-          const rowIva = net * num(row.ivaCode) / 100;
-          subtotal += net;
-          totalIva += rowIva;
-          const netCell = document.querySelector(`[data-net="${row.id}"]`);
-          if (netCell) netCell.textContent = euro.format(net);
-        });
-        totalNet += subtotal;
-        const subtotalCell = document.querySelector(`[data-subtotal="${cat.id}"]`);
-        if (subtotalCell) subtotalCell.textContent = euro.format(subtotal);
-      });
-
-      const showIva = document.getElementById("showIva").checked;
-
-      document.getElementById("totalNet").textContent = euro.format(totalNet);
-      document.getElementById("totalIva").textContent = euro.format(showIva ? totalIva : 0);
-      document.getElementById("totalGrand").textContent = euro.format(showIva ? totalNet + totalIva : totalNet);
-      renderConditions();
-    }
-
-    function renderConditions() {
-      const activeConditions = categories
-        .filter(cat => state.active[cat.id] && state.rows[cat.id].some(r => r.description || num(r.price) || num(r.qty)))
-        .map(cat => `<p class="condition-item"><strong>${cat.label}:</strong> ${cat.condition}</p>`);
-      conditionsList.innerHTML = activeConditions.length ? activeConditions.join("") : "<p class='condition-item'>Nessuna sezione attiva.</p>";
-    }
-
-    function updateDisplayOptions() {
-      const body = document.body;
-      body.classList.toggle("hide-unit-price", !document.getElementById("showUnitPrice").checked);
-      body.classList.toggle("hide-discount", !document.getElementById("showDiscount").checked);
-      body.classList.toggle("hide-subtotals", !document.getElementById("showSubtotals").checked);
-      body.classList.toggle("hide-totals", !document.getElementById("showTotals").checked);
-      body.classList.toggle("hide-iva", !document.getElementById("showIva").checked);
-      body.classList.toggle("hide-actions", document.getElementById("cleanMode").checked);
-      updateSubtotalColspans();
-    }
-
-    function updateSubtotalColspans() {
-      let columnsBeforeNet = 3;
-      if (document.getElementById("showUnitPrice").checked) columnsBeforeNet += 1;
-      if (document.getElementById("showDiscount").checked) columnsBeforeNet += 1;
-      if (document.getElementById("showIva").checked) columnsBeforeNet += 1;
-
-      document.querySelectorAll(".subtotal-row td:first-child").forEach(cell => {
-        cell.colSpan = columnsBeforeNet;
-      });
     }
 
     function resetPreventivo() {
@@ -1427,20 +1045,19 @@
         state.active[cat.id] = index < 2;
         state.rows[cat.id] = [{ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0, ivaCode: "22" }];
       });
-      document.getElementById("quoteNumber").value = "001-2026";
+      document.getElementById("clientName").value = "";
+      document.getElementById("siteName").value = "";
       document.getElementById("quoteDate").value = todayISO();
       document.getElementById("freeNotes").value = "";
       render();
-      savePreventivo();
     }
 
     function addOneRowPerSection() {
       syncFromDOM();
       categories.forEach(cat => {
-        if (state.active[cat.id]) state.rows[cat.id].push({ id: uid(), description: "", um: "nr", qty: 1, price: 0, discount: 0, ivaCode: "22" });
+        if (state.active[cat.id]) addRow(cat.id, false);
       });
       render();
-      savePreventivo();
     }
 
     function printPDF() {
@@ -1457,29 +1074,64 @@
       updateDisplayOptions();
     }
 
-    document.querySelectorAll(".logo-check").forEach(input => input.addEventListener("change", () => { renderLogos(); savePreventivo(); }));
-    document.getElementById("showUnitPrice").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
-    document.getElementById("showDiscount").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
-    document.getElementById("showSubtotals").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
-    document.getElementById("showTotals").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
-    document.getElementById("showIva").addEventListener("change", () => { updateDisplayOptions(); calculate(); savePreventivo(); });
-    document.getElementById("cleanMode").addEventListener("change", () => { updateDisplayOptions(); savePreventivo(); });
+    function bindDynamicEvents() {
+      document.querySelectorAll("[data-section-toggle]").forEach(input => {
+        input.addEventListener("change", event => {
+          syncFromDOM();
+          state.active[event.target.dataset.sectionToggle] = event.target.checked;
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-add-row]").forEach(btn => {
+        btn.addEventListener("click", event => addRow(event.target.dataset.addRow));
+      });
+
+      document.querySelectorAll("[data-add-five]").forEach(btn => {
+        btn.addEventListener("click", event => {
+          for (let i = 0; i < 5; i += 1) addRow(event.target.dataset.addFive, false);
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-delete-row]").forEach(btn => {
+        btn.addEventListener("click", event => {
+          const rowId = event.target.dataset.deleteRow;
+          const catId = event.target.closest("tr").dataset.cat;
+          state.rows[catId] = state.rows[catId].filter(row => row.id !== rowId);
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-field]").forEach(input => {
+        input.addEventListener("input", () => {
+          syncFromDOM();
+          calculate();
+        });
+        input.addEventListener("change", () => {
+          syncFromDOM();
+          calculate();
+        });
+      });
+    }
+
+    document.querySelectorAll(".logo-check").forEach(input => input.addEventListener("change", renderLogos));
+    document.getElementById("showUnitPrice").addEventListener("change", updateDisplayOptions);
+    document.getElementById("showDiscount").addEventListener("change", updateDisplayOptions);
+    document.getElementById("showSubtotals").addEventListener("change", updateDisplayOptions);
+    document.getElementById("showTotals").addEventListener("change", updateDisplayOptions);
+    document.getElementById("showIva").addEventListener("change", () => { updateDisplayOptions(); calculate(); });
+    document.getElementById("cleanMode").addEventListener("change", updateDisplayOptions);
     document.getElementById("resetBtn").addEventListener("click", resetPreventivo);
     document.getElementById("addAllBtn").addEventListener("click", addOneRowPerSection);
     document.getElementById("previewBtn").addEventListener("click", togglePreview);
     document.getElementById("printBtn").addEventListener("click", printPDF);
-    document.getElementById("quoteNumber").addEventListener("input", savePreventivo);
-    document.getElementById("quoteDate").addEventListener("change", savePreventivo);
-    document.getElementById("freeNotes").addEventListener("input", savePreventivo);
 
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js");
-      });
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
     }
 
     initState();
-    loadPreventivo();
     render();
   </script>
 </body>
