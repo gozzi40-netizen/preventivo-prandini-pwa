@@ -1,13 +1,11 @@
 {
-  "name": "Preventivo Commerciale Prandini",
-  "short_name": "Preventivo",
-  "description": "Preventivo commerciale Prandini installabile e utilizzabile offline.",
-  "lang": "it",
+  "name": "Preventivo Prandini Pulito",
+  "short_name": "Prandini",
+  "description": "Preventivo commerciale Prandini compilabile e stampabile.",
   "start_url": "./index.html",
-  "scope": "./",
   "display": "standalone",
   "background_color": "#eef1f5",
-  "theme_color": "#b58a1f",
+  "theme_color": "#ad8424",
   "icons": [
     {
       "src": "icons/icon.svg",
